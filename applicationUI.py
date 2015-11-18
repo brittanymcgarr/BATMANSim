@@ -119,19 +119,19 @@ class ApplicationUI:
         self.ip4_entry.insert(0, "0.0.0.3")
 
         # Create the entry and label widgets for broadcast times
-        self.castTime1_label = Label(self.left_frame, text="Broadcast Time:", width=entry_width)
+        self.castTime1_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
         self.castTime1_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime1_int)
 
-        self.castTime2_label = Label(self.left_frame, text="Broadcast Time:", width=entry_width)
+        self.castTime2_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
         self.castTime2_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime2_int)
 
-        self.castTime3_label = Label(self.left_frame, text="Broadcast Time:", width=entry_width)
+        self.castTime3_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
         self.castTime3_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime3_int)
 
-        self.castTime4_label = Label(self.left_frame, text="Broadcast Time:", width=entry_width)
+        self.castTime4_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
         self.castTime4_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime4_int)
 
-        # Create the neighbor listbox selections
+        # Create the neighbor list selections
         self.neighbor1_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
         self.neighbor2_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
         self.neighbor3_label = Label(self.left_frame, text="Neighbors:", width=entry_width)

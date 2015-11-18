@@ -120,7 +120,7 @@ class User:
     # Report current state to string
     def reportString(self):
         ip = "IP: " + str(self.IP) + "\n"
-        bct = "Broadcast Time: " + str(self.broadcastTime) + "\n"
+        bct = "OGM Interval Time: " + str(self.broadcastTime) + "\n"
         direction = "Uni-Directional Link: " + str(self.directional) + "\n"
         seq = "Sequence: " + str(self.sequence) + "\n"
 
@@ -144,7 +144,7 @@ class User:
         totReceiving += "\n"
 
         # Repeat for OGMs
-        totOGMs = "Received OGMs: "
+        totOGMs = "Network Topology: "
         for ogmIndex in self.receivedOGMs:
             totOGMs += str(self.receivedOGMs[ogmIndex].originatorIP) + " "
         totOGMs += "\n\n"
