@@ -150,6 +150,10 @@ class ApplicationUI:
         self.add2_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser2)
         self.add3_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser3)
         self.add4_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser4)
+        self.remNbr1_button = Button(self.left_frame, text="Remove Neighbor", width=nodeButton_width, command=self.removeNeighbor1)
+        self.remNbr2_button = Button(self.left_frame, text="Remove Neighbor", width=nodeButton_width, command=self.removeNeighbor2)
+        self.remNbr3_button = Button(self.left_frame, text="Remove Neighbor", width=nodeButton_width, command=self.removeNeighbor3)
+        self.remNbr4_button = Button(self.left_frame, text="Remove Neighbor", width=nodeButton_width, command=self.removeNeighbor4)
         self.remove1_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser1)
         self.remove2_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser2)
         self.remove3_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser3)
@@ -278,8 +282,33 @@ class ApplicationUI:
                 self.neighbors4_list.append(self.controller.network[self.neighbor4_str.get()])
 
     # Remove a neighbor from the node
-    def removeNeighbor(self):
-        return True # STUB
+    def removeNeighbor1(self):
+        if self.ip1_entry.get() in self.controller.network.keys():
+            if self.neighbor1_str.get() in self.controller.network.keys():
+                userNode = self.controller.network[self.ip1_entry.get()]
+                neighbor = self.controller.network[self.neighbor1_str.get()]
+                userNode.removeNeighbor(neighbor)
+
+    def removeNeighbor2(self):
+        if self.ip2_entry.get() in self.controller.network.keys():
+            if self.neighbor2_str.get() in self.controller.network.keys():
+                userNode = self.controller.network[self.ip2_entry.get()]
+                neighbor = self.controller.network[self.neighbor2_str.get()]
+                userNode.removeNeighbor(neighbor)
+
+    def removeNeighbor3(self):
+        if self.ip3_entry.get() in self.controller.network.keys():
+            if self.neighbor3_str.get() in self.controller.network.keys():
+                userNode = self.controller.network[self.ip3_entry.get()]
+                neighbor = self.controller.network[self.neighbor3_str.get()]
+                userNode.removeNeighbor(neighbor)
+
+    def removeNeighbor4(self):
+        if self.ip4_entry.get() in self.controller.network.keys():
+            if self.neighbor4_str.get() in self.controller.network.keys():
+                userNode = self.controller.network[self.ip4_entry.get()]
+                neighbor = self.controller.network[self.neighbor4_str.get()]
+                userNode.removeNeighbor(neighbor)
 
     # Clear the network and restart
     def clearNetwork(self):
@@ -342,7 +371,8 @@ class ApplicationUI:
         self.neighbor1_entry.grid(row=3, column=1)
         self.addNbr1_button.grid(row=4, column=0)
         self.add1_button.grid(row=4, column=1)
-        self.remove1_button.grid(row=5, column=0)
+        self.remNbr1_button.grid(row=5, column=0)
+        self.remove1_button.grid(row=5, column=1)
         self.node2_button.grid(row=6, column=0, columnspan=2)
         self.hideUserInput1()
         self.node3_button.grid(row=7, column=0, columnspan=2)
@@ -364,7 +394,8 @@ class ApplicationUI:
         self.neighbor2_entry.grid(row=4, column=1)
         self.addNbr2_button.grid(row=5, column=0)
         self.add2_button.grid(row=5, column=1)
-        self.remove2_button.grid(row=6, column=0)
+        self.remNbr2_button.grid(row=6, column=0)
+        self.remove2_button.grid(row=6, column=1)
         self.node3_button.grid(row=7, column=0, columnspan=2)
         self.node4_button.grid(row=8, column=0, columnspan=2)
         self.timeStep_label.grid(row=9, column=0)
@@ -385,7 +416,8 @@ class ApplicationUI:
         self.neighbor3_entry.grid(row=5, column=1)
         self.addNbr3_button.grid(row=6, column=0)
         self.add3_button.grid(row=6, column=1)
-        self.remove3_button.grid(row=7, column=0)
+        self.remNbr3_button.grid(row=7, column=0)
+        self.remove3_button.grid(row=7, column=1)
         self.node4_button.grid(row=8, column=0, columnspan=2)
         self.timeStep_label.grid(row=9, column=0)
         self.timeStep_entry.grid(row=9, column=1)
@@ -406,7 +438,8 @@ class ApplicationUI:
         self.neighbor4_entry.grid(row=6, column=1)
         self.addNbr4_button.grid(row=7, column=0)
         self.add4_button.grid(row=7, column=1)
-        self.remove4_button.grid(row=8, column=0)
+        self.remNbr4_button.grid(row=8, column=0)
+        self.remove4_button.grid(row=8, column=1)
         self.timeStep_label.grid(row=9, column=0)
         self.timeStep_entry.grid(row=9, column=1)
         self.start_button.grid(row=10, column=0)
@@ -422,6 +455,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remNbr2_button.grid_forget()
         self.remove2_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
@@ -431,6 +465,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remNbr3_button.grid_forget()
         self.remove3_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
@@ -440,6 +475,7 @@ class ApplicationUI:
         self.neighbor4_label.grid_forget()
         self.neighbor4_entry.grid_forget()
         self.add4_button.grid_forget()
+        self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
 
     def hideUserInput2(self):
@@ -451,6 +487,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remNbr1_button.grid_forget()
         self.remove1_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
@@ -460,6 +497,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remNbr3_button.grid_forget()
         self.remove3_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
@@ -469,6 +507,7 @@ class ApplicationUI:
         self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
+        self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
 
     def hideUserInput3(self):
@@ -480,6 +519,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remNbr1_button.grid_forget()
         self.remove1_button.grid_forget()
         self.ip2_label.grid_forget()
         self.ip2_entry.grid_forget()
@@ -489,6 +529,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remNbr2_button.grid_forget()
         self.remove2_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
@@ -498,6 +539,7 @@ class ApplicationUI:
         self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
+        self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
 
     def hideUserInput4(self):
@@ -509,6 +551,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remNbr1_button.grid_forget()
         self.remove1_button.grid_forget()
         self.ip2_label.grid_forget()
         self.ip2_entry.grid_forget()
@@ -518,6 +561,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remNbr2_button.grid_forget()
         self.remove2_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
@@ -527,6 +571,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remNbr3_button.grid_forget()
         self.remove3_button.grid_forget()
 
     # Show the user manual
