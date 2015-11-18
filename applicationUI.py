@@ -13,6 +13,7 @@
 
 
 from Tkinter import *
+import time
 import controller
 import ogm
 import user
@@ -130,10 +131,10 @@ class ApplicationUI:
         self.neighbor2_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
         self.neighbor3_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
         self.neighbor4_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
-        self.neighbor1_om = OptionMenu(self.left_frame, self.neighbor1_str, self.neighbors_list)
-        self.neighbor2_om = OptionMenu(self.left_frame, self.neighbor2_str, self.neighbors_list)
-        self.neighbor3_om = OptionMenu(self.left_frame, self.neighbor3_str, self.neighbors_list)
-        self.neighbor4_om = OptionMenu(self.left_frame, self.neighbor4_str, self.neighbors_list)
+        self.neighbor1_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor1_str)
+        self.neighbor2_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor2_str)
+        self.neighbor3_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor3_str)
+        self.neighbor4_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor4_str)
 
         # Create the submission buttons
         self.addNbr1_button = Button(self.left_frame, text="Add Neighbor", width=selection_width, command=self.addNeighbor1)
@@ -204,19 +205,51 @@ class ApplicationUI:
     # Add a neighbor from a drop down listing
     def addNeighbor1(self):
         if self.neighbor1_str.get() in self.controller.network.keys():
-            self.neighbors1_list.append(self.controller.network[self.neighbor1_str.get()])
+            if self.ip1_entry.get() in self.controller.network.keys():
+                notFound = True
+                for each in self.controller.network[self.ip1_entry.get()].neighbors:
+                    if self.neighbor1_str.get() == each.IP:
+                        notFound = False
+                if notFound:
+                    self.controller.network[self.ip1_entry.get()].neighbors.append(self.controller.network[self.neighbor1_str.get()])
+            else:
+                self.neighbors1_list.append(self.controller.network[self.neighbor1_str.get()])
 
     def addNeighbor2(self):
         if self.neighbor2_str.get() in self.controller.network.keys():
-            self.neighbors2_list.append(self.controller.network[self.neighbor2_str.get()])
+            if self.ip2_entry.get() in self.controller.network.keys():
+                notFound = True
+                for each in self.controller.network[self.ip2_entry.get()].neighbors:
+                    if self.neighbor2_str.get() == each.IP:
+                        notFound = False
+                if notFound:
+                    self.controller.network[self.ip2_entry.get()].neighbors.append(self.controller.network[self.neighbor2_str.get()])
+            else:
+                self.neighbors2_list.append(self.controller.network[self.neighbor2_str.get()])
 
     def addNeighbor3(self):
         if self.neighbor3_str.get() in self.controller.network.keys():
-            self.neighbors3_list.append(self.controller.network[self.neighbor3_str.get()])
+            if self.ip3_entry.get() in self.controller.network.keys():
+                notFound = True
+                for each in self.controller.network[self.ip3_entry.get()].neighbors:
+                    if self.neighbor3_str.get() == each.IP:
+                        notFound = False
+                if notFound:
+                    self.controller.network[self.ip3_entry.get()].neighbors.append(self.controller.network[self.neighbor3_str.get()])
+            else:
+                self.neighbors3_list.append(self.controller.network[self.neighbor3_str.get()])
 
     def addNeighbor4(self):
         if self.neighbor4_str.get() in self.controller.network.keys():
-            self.neighbors4_list.append(self.controller.network[self.neighbor4_str.get()])
+            if self.ip4_entry.get() in self.controller.network.keys():
+                notFound = True
+                for each in self.controller.network[self.ip4_entry.get()].neighbors:
+                    if self.neighbor4_str.get() == each.IP:
+                        notFound = False
+                if notFound:
+                    self.controller.network[self.ip4_entry.get()].neighbors.append(self.controller.network[self.neighbor4_str.get()])
+            else:
+                self.neighbors4_list.append(self.controller.network[self.neighbor4_str.get()])
 
     # Remove a neighbor from the node
     def removeNeighbor(self):
@@ -228,7 +261,7 @@ class ApplicationUI:
 
     # Print a report of the console log to a file
     def printConsole(self):
-        fileOUT = open("report.txt", "w")
+        fileOUT = open("report" + "_" + time.strftime("%d%m%Y"), "w")
         for line in self.messagePipe:
             if not isinstance(line, basestring):
                 outLine = ", ".join(line)
@@ -240,11 +273,17 @@ class ApplicationUI:
 
     # Show the network state in the console
     def reportConsole(self):
-        self.messagePipe.append(self.controller.report())
+        self.messagePipe.append(self.controller.reportString())
         self.console.insert(END, self.messagePipe[-1])
-        self.messagePipe.append("\n")
+        self.messagePipe.append("\n\n")
         self.console.insert(END, self.messagePipe[-1])
         self.console.yview(END)
+
+        # Report each node status
+        for node in self.controller.network:
+            self.messagePipe.append(self.controller.network[node].reportString())
+            self.console.insert(END, self.messagePipe[-1])
+            self.console.yview(END)
 
     # Save the current configuration to a file
     def saveNetwork(self):
@@ -271,7 +310,7 @@ class ApplicationUI:
         self.castTime1_label.grid(row=2, column=0)
         self.castTime1_entry.grid(row=2, column=1)
         self.neighbor1_label.grid(row=3, column=0)
-        self.neighbor1_om.grid(row=3, column=1)
+        self.neighbor1_entry.grid(row=3, column=1)
         self.addNbr1_button.grid(row=4, column=0)
         self.add1_button.grid(row=4, column=1)
         self.node2_button.grid(row=5, column=0, columnspan=2)
@@ -292,7 +331,7 @@ class ApplicationUI:
         self.castTime2_label.grid(row=3, column=0)
         self.castTime2_entry.grid(row=3, column=1)
         self.neighbor2_label.grid(row=4, column=0)
-        self.neighbor2_om.grid(row=4, column=1)
+        self.neighbor2_entry.grid(row=4, column=1)
         self.addNbr2_button.grid(row=5, column=0)
         self.add2_button.grid(row=5, column=1)
         self.node3_button.grid(row=6, column=0, columnspan=2)
@@ -312,7 +351,7 @@ class ApplicationUI:
         self.castTime3_label.grid(row=4, column=0)
         self.castTime3_entry.grid(row=4, column=1)
         self.neighbor3_label.grid(row=5, column=0)
-        self.neighbor3_om.grid(row=5, column=1)
+        self.neighbor3_entry.grid(row=5, column=1)
         self.addNbr3_button.grid(row=6, column=0)
         self.add3_button.grid(row=6, column=1)
         self.node4_button.grid(row=7, column=0, columnspan=2)
@@ -332,7 +371,7 @@ class ApplicationUI:
         self.castTime4_label.grid(row=5, column=0)
         self.castTime4_entry.grid(row=5, column=1)
         self.neighbor4_label.grid(row=6, column=0)
-        self.neighbor4_om.grid(row=6, column=1)
+        self.neighbor4_entry.grid(row=6, column=1)
         self.addNbr4_button.grid(row=7, column=0)
         self.add4_button.grid(row=7, column=1)
         self.timeStep_label.grid(row=8, column=0)
@@ -347,7 +386,7 @@ class ApplicationUI:
         self.castTime2_label.grid_forget()
         self.castTime2_entry.grid_forget()
         self.neighbor2_label.grid_forget()
-        self.neighbor2_om.grid_forget()
+        self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
         self.ip3_label.grid_forget()
@@ -355,7 +394,7 @@ class ApplicationUI:
         self.castTime3_label.grid_forget()
         self.castTime3_entry.grid_forget()
         self.neighbor3_label.grid_forget()
-        self.neighbor3_om.grid_forget()
+        self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
         self.ip4_label.grid_forget()
@@ -364,7 +403,7 @@ class ApplicationUI:
         self.castTime4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.neighbor4_label.grid_forget()
-        self.neighbor4_om.grid_forget()
+        self.neighbor4_entry.grid_forget()
         self.add4_button.grid_forget()
 
     def hideUserInput2(self):
@@ -373,7 +412,7 @@ class ApplicationUI:
         self.castTime1_label.grid_forget()
         self.castTime1_entry.grid_forget()
         self.neighbor1_label.grid_forget()
-        self.neighbor1_om.grid_forget()
+        self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
         self.ip3_label.grid_forget()
@@ -381,7 +420,7 @@ class ApplicationUI:
         self.castTime3_label.grid_forget()
         self.castTime3_entry.grid_forget()
         self.neighbor3_label.grid_forget()
-        self.neighbor3_om.grid_forget()
+        self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
         self.ip4_label.grid_forget()
@@ -389,7 +428,7 @@ class ApplicationUI:
         self.castTime4_label.grid_forget()
         self.castTime4_entry.grid_forget()
         self.neighbor4_label.grid_forget()
-        self.neighbor4_om.grid_forget()
+        self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
 
@@ -399,7 +438,7 @@ class ApplicationUI:
         self.castTime1_label.grid_forget()
         self.castTime1_entry.grid_forget()
         self.neighbor1_label.grid_forget()
-        self.neighbor1_om.grid_forget()
+        self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
         self.ip2_label.grid_forget()
@@ -407,7 +446,7 @@ class ApplicationUI:
         self.castTime2_label.grid_forget()
         self.castTime2_entry.grid_forget()
         self.neighbor2_label.grid_forget()
-        self.neighbor2_om.grid_forget()
+        self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
         self.ip4_label.grid_forget()
@@ -415,7 +454,7 @@ class ApplicationUI:
         self.castTime4_label.grid_forget()
         self.castTime4_entry.grid_forget()
         self.neighbor4_label.grid_forget()
-        self.neighbor4_om.grid_forget()
+        self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
 
@@ -425,7 +464,7 @@ class ApplicationUI:
         self.castTime1_label.grid_forget()
         self.castTime1_entry.grid_forget()
         self.neighbor1_label.grid_forget()
-        self.neighbor1_om.grid_forget()
+        self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
         self.ip2_label.grid_forget()
@@ -433,7 +472,7 @@ class ApplicationUI:
         self.castTime2_label.grid_forget()
         self.castTime2_entry.grid_forget()
         self.neighbor2_label.grid_forget()
-        self.neighbor2_om.grid_forget()
+        self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
         self.ip3_label.grid_forget()
@@ -441,7 +480,7 @@ class ApplicationUI:
         self.castTime3_label.grid_forget()
         self.castTime3_entry.grid_forget()
         self.neighbor3_label.grid_forget()
-        self.neighbor3_om.grid_forget()
+        self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
 

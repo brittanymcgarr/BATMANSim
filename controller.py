@@ -27,7 +27,13 @@ class Controller:
             return False
         else:
             self.network[newUser.IP] = newUser
+            self.updateNetwork()
             return True
+
+    # Update the all net dictionary of each node when a new node enters
+    def updateNetwork(self):
+        for key, value in self.network.iteritems():
+            value.allNet = self.network
 
     # Clear the network of current user nodes
     def clear(self):
@@ -38,48 +44,53 @@ class Controller:
     def report(self):
         return self.network.keys()
 
+    # Report a string of current IPs and OGMs in the system
+    def reportString(self):
+        report = "Network:\n"
+
+        for key, value in self.network.iteritems():
+            report += "IP: " + str(key) + "\n"
+
+        report += "\nLost OGMS:\n"
+        for index in self.lostOGMs:
+            report += "OGM source IP: " + str(index.senderIP) + "Sequence: " + str(index.sequence) + "\n"
+
+        return report
+
     # Time step function for going through each user in the net and performing transportation
     def tick(self, deltaTime):
         timeDiff = 0
         # All actions performed by controller for each step in time
         while deltaTime > 0:
+            # Call user node tick functions
+            for key, value in self.network.iteritems():
+                value.tick(timeDiff)
+
             deltaTime -= 1
             timeDiff += 1
+            if deltaTime > 0:
+                # Generate OGMs for those that have met their time to cast
+                for key, value in self.network.iteritems():
+                    value.broadcastOGMs(timeDiff)
 
-            # Call user node tick functions
-            for each in self.network:
-                each.tick(timeDiff)
+            deltaTime -= 1
+            timeDiff += 1
+            if deltaTime > 0:
+                # Transport one of the generated OGMs to their next hops
+                for key, value in self.network.iteritems():
+                    if len(value.sendQueue) > 0:
+                        outgoingOGM = value.sendQueue.pop(0)
+                        # Check the network for a valid IP corresponding to next hop
+                        if outgoingOGM.nextHop in self.network.keys():
+                            for keyA, valueA in self.network.iteritems():
+                                destination = self.network[outgoingOGM.nextHop]
+                                destination.receiveQueue.append(outgoingOGM)
+                        else:
+                            self.lostOGMs.append(outgoingOGM)
 
-            # Generate OGMs for those that have met their time to cast
-            for each in self.network:
-                each.broadcastOGMs(timeDiff)
-
-            # Transport one of the generated OGMs to their next hops
-            for each in self.network:
-                if len(each.sendQueue) > 0:
-                    ogm = each.sendQueue.pop(0)
-
-                    # Check the network for a valid IP corresponding to next hop
-                    if ogm.nextHop in self.network:
-                        destination = self.network[ogm.nextHop]
-                        destination.receiveQueue.append(ogm)
-                    else:
-                        self.lostOGMs.append(ogm)
-
-            # Retrieve an OGM from each user's receive queue
-            for each in self.network:
-                each.receiveOGM()
-
-
-# Debugging
-if __name__ == '__main__':
-    testUser = user.User("0.0.0.1")
-    testUser2 = user.User("0.0.0.2")
-    testUser3 = user.User("0.0.0.3")
-    controller = Controller()
-    controller.addUser(testUser)
-    print controller.network.keys()
-    controller.addUser(testUser2)
-    print controller.network.keys()
-    controller.addUser(testUser3)
-    print controller.network.keys()
+            deltaTime -= 1
+            timeDiff += 1
+            if deltaTime > 0:
+                # Retrieve an OGM from each user's receive queue
+                for key, value in self.network.iteritems():
+                    value.receiveOGM()
