@@ -67,6 +67,9 @@ class User:
             if incomingOGM.senderIP == self.IP or incomingOGM.directional:
                 return False
 
+            # Update the trace route listing (just IP address)
+            incomingOGM.traceroute.append(self.IP)
+
             # Check the originator and sender IPs
             if incomingOGM.originatorIP == incomingOGM.senderIP:
                 # If they matched, the OGM goes directly to a neighbor, check the list

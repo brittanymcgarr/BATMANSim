@@ -15,13 +15,15 @@
 class OGM:
     # Constructor
     def __init__(self, origIP="0.0.0.0", sendIP="0.0.0.0", nextHop="0.0.0.0", seq=0,
-                 ttl=10, direction=False):
+                 ttl=10, direction=False, payload=""):
         self.originatorIP = origIP
         self.senderIP = sendIP
         self.nextHop = nextHop
         self.sequence = seq
         self.TTL = ttl
         self.directional = direction
+        self.traceroute = [self.senderIP]
+        self.data = payload
 
     # Report the OGM to a string
     def reportString(self):

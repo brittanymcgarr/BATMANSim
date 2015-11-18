@@ -102,40 +102,40 @@ class ApplicationUI:
         self.node4_button = Button(self.left_frame, text="User Node 4", width=button_width, command=self.displayUserInput4)
 
         # Create the entry and label widgets for IP addressing
-        self.ip1_label = Label(self.left_frame, text="IP:", width=entry_width)
+        self.ip1_label = Label(self.left_frame, text="IP Address:", width=entry_width)
         self.ip1_entry = Entry(self.left_frame, width=entry_width)
-        self.ip1_entry.insert(0, "0.0.0.0")
+        self.ip1_entry.insert(0, "0.0.0.1")
 
-        self.ip2_label = Label(self.left_frame, text="IP:", width=entry_width)
+        self.ip2_label = Label(self.left_frame, text="IP Address:", width=entry_width)
         self.ip2_entry = Entry(self.left_frame, width=entry_width)
-        self.ip2_entry.insert(0, "0.0.0.1")
+        self.ip2_entry.insert(0, "0.0.0.2")
 
-        self.ip3_label = Label(self.left_frame, text="IP:", width=entry_width)
+        self.ip3_label = Label(self.left_frame, text="IP Address:", width=entry_width)
         self.ip3_entry = Entry(self.left_frame, width=entry_width)
-        self.ip3_entry.insert(0, "0.0.0.2")
+        self.ip3_entry.insert(0, "0.0.0.3")
 
-        self.ip4_label = Label(self.left_frame, text="IP:", width=entry_width)
+        self.ip4_label = Label(self.left_frame, text="IP Address:", width=entry_width)
         self.ip4_entry = Entry(self.left_frame, width=entry_width)
-        self.ip4_entry.insert(0, "0.0.0.3")
+        self.ip4_entry.insert(0, "0.0.0.4")
 
         # Create the entry and label widgets for broadcast times
-        self.castTime1_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
+        self.castTime1_label = Label(self.left_frame, text="OGM Interval (100msec):", width=entry_width)
         self.castTime1_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime1_int)
 
-        self.castTime2_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
+        self.castTime2_label = Label(self.left_frame, text="OGM Interval (100msec):", width=entry_width)
         self.castTime2_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime2_int)
 
-        self.castTime3_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
+        self.castTime3_label = Label(self.left_frame, text="OGM Interval (100msec):", width=entry_width)
         self.castTime3_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime3_int)
 
-        self.castTime4_label = Label(self.left_frame, text="Interval Time:", width=entry_width)
+        self.castTime4_label = Label(self.left_frame, text="OGM Interval (100msec):", width=entry_width)
         self.castTime4_entry = Entry(self.left_frame, width=entry_width, textvariable=self.castTime4_int)
 
         # Create the neighbor list selections
-        self.neighbor1_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
-        self.neighbor2_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
-        self.neighbor3_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
-        self.neighbor4_label = Label(self.left_frame, text="Neighbors:", width=entry_width)
+        self.neighbor1_label = Label(self.left_frame, text="Admin Neighbors:", width=entry_width)
+        self.neighbor2_label = Label(self.left_frame, text="Admin Neighbors:", width=entry_width)
+        self.neighbor3_label = Label(self.left_frame, text="Admin Neighbors:", width=entry_width)
+        self.neighbor4_label = Label(self.left_frame, text="Admin Neighbors:", width=entry_width)
         self.neighbor1_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor1_str)
         self.neighbor2_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor2_str)
         self.neighbor3_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor3_str)
@@ -160,7 +160,7 @@ class ApplicationUI:
         self.remove4_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser4)
 
         # Create the simulation time entry and start simulation buttons
-        self.timeStep_label = Label(self.left_frame, text="Run Time:", width=entry_width)
+        self.timeStep_label = Label(self.left_frame, text="Run Time (100msec):", width=entry_width)
         self.timeStep_entry = Entry(self.left_frame, width=entry_width, textvariable=self.timeStep_int)
         self.start_button = Button(self.left_frame, text="Start Simulation", width=selection_width, command=self.runNetwork)
         self.report_button = Button(self.left_frame, text="Show Network", width=selection_width, command=self.reportConsole)
