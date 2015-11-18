@@ -40,6 +40,7 @@ class ApplicationUI:
         entry_width = 20
         button_width = 50
         selection_width = 20
+        nodeButton_width = 15
 
         # Display colors and entry fields
         self.colors = ("white", "black", "yellow", "red", "green", "blue", "#0e1927", "#ffd11a", "#00802b")
@@ -47,6 +48,10 @@ class ApplicationUI:
         self.castTime2_int = IntVar()
         self.castTime3_int = IntVar()
         self.castTime4_int = IntVar()
+        self.castTime1_int.set(5)
+        self.castTime2_int.set(5)
+        self.castTime3_int.set(5)
+        self.castTime4_int.set(5)
         self.neighbor1_str = StringVar()
         self.neighbor2_str = StringVar()
         self.neighbor3_str = StringVar()
@@ -137,14 +142,18 @@ class ApplicationUI:
         self.neighbor4_entry = Entry(self.left_frame, width=entry_width, textvariable=self.neighbor4_str)
 
         # Create the submission buttons
-        self.addNbr1_button = Button(self.left_frame, text="Add Neighbor", width=selection_width, command=self.addNeighbor1)
-        self.addNbr2_button = Button(self.left_frame, text="Add Neighbor", width=selection_width, command=self.addNeighbor2)
-        self.addNbr3_button = Button(self.left_frame, text="Add Neighbor", width=selection_width, command=self.addNeighbor3)
-        self.addNbr4_button = Button(self.left_frame, text="Add Neighbor", width=selection_width, command=self.addNeighbor4)
-        self.add1_button = Button(self.left_frame, text="Add Node", width=selection_width, command=self.addUser1)
-        self.add2_button = Button(self.left_frame, text="Add Node", width=selection_width, command=self.addUser2)
-        self.add3_button = Button(self.left_frame, text="Add Node", width=selection_width, command=self.addUser3)
-        self.add4_button = Button(self.left_frame, text="Add Node", width=selection_width, command=self.addUser4)
+        self.addNbr1_button = Button(self.left_frame, text="Add Neighbor", width=nodeButton_width, command=self.addNeighbor1)
+        self.addNbr2_button = Button(self.left_frame, text="Add Neighbor", width=nodeButton_width, command=self.addNeighbor2)
+        self.addNbr3_button = Button(self.left_frame, text="Add Neighbor", width=nodeButton_width, command=self.addNeighbor3)
+        self.addNbr4_button = Button(self.left_frame, text="Add Neighbor", width=nodeButton_width, command=self.addNeighbor4)
+        self.add1_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser1)
+        self.add2_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser2)
+        self.add3_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser3)
+        self.add4_button = Button(self.left_frame, text="Add Node", width=nodeButton_width, command=self.addUser4)
+        self.remove1_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser1)
+        self.remove2_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser2)
+        self.remove3_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser3)
+        self.remove4_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser4)
 
         # Create the simulation time entry and start simulation buttons
         self.timeStep_label = Label(self.left_frame, text="Run Time:", width=entry_width)
@@ -199,8 +208,25 @@ class ApplicationUI:
             self.neighbors_list.append(newUser.IP)
 
     # Remove a user node from the system
-    def removeUser(self):
-        return True # STUB
+    def removeUser1(self):
+        exitUser = self.controller.network[self.ip1_entry.get()]
+        self.controller.removeUser(exitUser)
+        print str(self.neighbors_list)  # STUB : Debug console
+
+    def removeUser2(self):
+        exitUser = self.controller.network[self.ip2_entry.get()]
+        self.controller.removeUser(exitUser)
+        print str(self.neighbors_list)  # STUB : Debug console
+
+    def removeUser3(self):
+        exitUser = self.controller.network[self.ip3_entry.get()]
+        self.controller.removeUser(exitUser)
+        print str(self.neighbors_list)  # STUB : Debug console
+
+    def removeUser4(self):
+        exitUser = self.controller.network[self.ip4_entry.get()]
+        self.controller.removeUser(exitUser)
+        print str(self.neighbors_list)  # STUB : Debug console
 
     # Add a neighbor from a drop down listing
     def addNeighbor1(self):
@@ -300,7 +326,10 @@ class ApplicationUI:
     # Run the program for the specified time
     def runNetwork(self):
         if self.timeStep_int.get() > 0:
+            self.messagePipe.append("\n\nRun Time: " + str(self.timeStep_int.get()) + "\n")
+            self.console.insert(END, self.messagePipe[-1])
             self.controller.tick(self.timeStep_int.get())
+            self.reportConsole()
 
     # User node drop down function displays
     def displayUserInput1(self):
@@ -313,14 +342,15 @@ class ApplicationUI:
         self.neighbor1_entry.grid(row=3, column=1)
         self.addNbr1_button.grid(row=4, column=0)
         self.add1_button.grid(row=4, column=1)
-        self.node2_button.grid(row=5, column=0, columnspan=2)
+        self.remove1_button.grid(row=5, column=0)
+        self.node2_button.grid(row=6, column=0, columnspan=2)
         self.hideUserInput1()
-        self.node3_button.grid(row=6, column=0, columnspan=2)
-        self.node4_button.grid(row=7, column=0, columnspan=2)
-        self.timeStep_label.grid(row=8, column=0)
-        self.timeStep_entry.grid(row=8, column=1)
-        self.start_button.grid(row=9, column=0)
-        self.report_button.grid(row=9, column=1)
+        self.node3_button.grid(row=7, column=0, columnspan=2)
+        self.node4_button.grid(row=8, column=0, columnspan=2)
+        self.timeStep_label.grid(row=9, column=0)
+        self.timeStep_entry.grid(row=9, column=1)
+        self.start_button.grid(row=10, column=0)
+        self.report_button.grid(row=10, column=1)
 
     def displayUserInput2(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -334,12 +364,13 @@ class ApplicationUI:
         self.neighbor2_entry.grid(row=4, column=1)
         self.addNbr2_button.grid(row=5, column=0)
         self.add2_button.grid(row=5, column=1)
-        self.node3_button.grid(row=6, column=0, columnspan=2)
-        self.node4_button.grid(row=7, column=0, columnspan=2)
-        self.timeStep_label.grid(row=8, column=0)
-        self.timeStep_entry.grid(row=8, column=1)
-        self.start_button.grid(row=9, column=0)
-        self.report_button.grid(row=9, column=1)
+        self.remove2_button.grid(row=6, column=0)
+        self.node3_button.grid(row=7, column=0, columnspan=2)
+        self.node4_button.grid(row=8, column=0, columnspan=2)
+        self.timeStep_label.grid(row=9, column=0)
+        self.timeStep_entry.grid(row=9, column=1)
+        self.start_button.grid(row=10, column=0)
+        self.report_button.grid(row=10, column=1)
 
     def displayUserInput3(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -354,11 +385,12 @@ class ApplicationUI:
         self.neighbor3_entry.grid(row=5, column=1)
         self.addNbr3_button.grid(row=6, column=0)
         self.add3_button.grid(row=6, column=1)
-        self.node4_button.grid(row=7, column=0, columnspan=2)
-        self.timeStep_label.grid(row=8, column=0)
-        self.timeStep_entry.grid(row=8, column=1)
-        self.start_button.grid(row=9, column=0)
-        self.report_button.grid(row=9, column=1)
+        self.remove3_button.grid(row=7, column=0)
+        self.node4_button.grid(row=8, column=0, columnspan=2)
+        self.timeStep_label.grid(row=9, column=0)
+        self.timeStep_entry.grid(row=9, column=1)
+        self.start_button.grid(row=10, column=0)
+        self.report_button.grid(row=10, column=1)
 
     def displayUserInput4(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -374,10 +406,11 @@ class ApplicationUI:
         self.neighbor4_entry.grid(row=6, column=1)
         self.addNbr4_button.grid(row=7, column=0)
         self.add4_button.grid(row=7, column=1)
-        self.timeStep_label.grid(row=8, column=0)
-        self.timeStep_entry.grid(row=8, column=1)
-        self.start_button.grid(row=9, column=0)
-        self.report_button.grid(row=9, column=1)
+        self.remove4_button.grid(row=8, column=0)
+        self.timeStep_label.grid(row=9, column=0)
+        self.timeStep_entry.grid(row=9, column=1)
+        self.start_button.grid(row=10, column=0)
+        self.report_button.grid(row=10, column=1)
 
     # Clear the node input display for the specified node
     def hideUserInput1(self):
@@ -389,6 +422,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remove2_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
         self.castTime3_label.grid_forget()
@@ -397,6 +431,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remove3_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
         self.castTime4_label.grid_forget()
@@ -405,6 +440,7 @@ class ApplicationUI:
         self.neighbor4_label.grid_forget()
         self.neighbor4_entry.grid_forget()
         self.add4_button.grid_forget()
+        self.remove4_button.grid_forget()
 
     def hideUserInput2(self):
         self.ip1_label.grid_forget()
@@ -415,6 +451,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remove1_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
         self.castTime3_label.grid_forget()
@@ -423,6 +460,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remove3_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
         self.castTime4_label.grid_forget()
@@ -431,6 +469,7 @@ class ApplicationUI:
         self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
+        self.remove4_button.grid_forget()
 
     def hideUserInput3(self):
         self.ip1_label.grid_forget()
@@ -441,6 +480,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remove1_button.grid_forget()
         self.ip2_label.grid_forget()
         self.ip2_entry.grid_forget()
         self.castTime2_label.grid_forget()
@@ -449,6 +489,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remove2_button.grid_forget()
         self.ip4_label.grid_forget()
         self.ip4_entry.grid_forget()
         self.castTime4_label.grid_forget()
@@ -457,6 +498,7 @@ class ApplicationUI:
         self.neighbor4_entry.grid_forget()
         self.addNbr4_button.grid_forget()
         self.add4_button.grid_forget()
+        self.remove4_button.grid_forget()
 
     def hideUserInput4(self):
         self.ip1_label.grid_forget()
@@ -467,6 +509,7 @@ class ApplicationUI:
         self.neighbor1_entry.grid_forget()
         self.addNbr1_button.grid_forget()
         self.add1_button.grid_forget()
+        self.remove1_button.grid_forget()
         self.ip2_label.grid_forget()
         self.ip2_entry.grid_forget()
         self.castTime2_label.grid_forget()
@@ -475,6 +518,7 @@ class ApplicationUI:
         self.neighbor2_entry.grid_forget()
         self.addNbr2_button.grid_forget()
         self.add2_button.grid_forget()
+        self.remove2_button.grid_forget()
         self.ip3_label.grid_forget()
         self.ip3_entry.grid_forget()
         self.castTime3_label.grid_forget()
@@ -483,6 +527,7 @@ class ApplicationUI:
         self.neighbor3_entry.grid_forget()
         self.addNbr3_button.grid_forget()
         self.add3_button.grid_forget()
+        self.remove3_button.grid_forget()
 
     # Show the user manual
     def showManual(self):

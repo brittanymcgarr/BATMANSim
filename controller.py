@@ -30,6 +30,13 @@ class Controller:
             self.updateNetwork()
             return True
 
+    # Remove user from the network
+    def removeUser(self, exitUser):
+        # Check if the prompted user is in the network and proceed
+        if exitUser.IP in self.network.keys():
+            del self.network[exitUser.IP]
+            self.updateNetwork()
+
     # Update the all net dictionary of each node when a new node enters
     def updateNetwork(self):
         for key, value in self.network.iteritems():
