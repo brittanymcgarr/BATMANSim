@@ -69,12 +69,16 @@ class Controller:
         timeDiff = 0
         # All actions performed by controller for each step in time
         while deltaTime > 0:
+            deltaTime -= 1
+            timeDiff += 1
+
             # Call user node tick functions
             for key, value in self.network.iteritems():
                 value.tick(timeDiff)
 
             deltaTime -= 1
             timeDiff += 1
+
             if deltaTime > 0:
                 # Generate OGMs for those that have met their time to cast
                 for key, value in self.network.iteritems():
@@ -82,21 +86,22 @@ class Controller:
 
             deltaTime -= 1
             timeDiff += 1
+
             if deltaTime > 0:
-                # Transport one of the generated OGMs to their next hops
+                # Transport one of the generated OGMs to their next hops from each node
                 for key, value in self.network.iteritems():
                     if len(value.sendQueue) > 0:
                         outgoingOGM = value.sendQueue.pop(0)
                         # Check the network for a valid IP corresponding to next hop
                         if outgoingOGM.nextHop in self.network.keys():
-                            for keyA, valueA in self.network.iteritems():
-                                destination = self.network[outgoingOGM.nextHop]
-                                destination.receiveQueue.append(outgoingOGM)
+                            destination = self.network[outgoingOGM.nextHop]
+                            destination.receiveQueue.append(outgoingOGM)
                         else:
                             self.lostOGMs.append(outgoingOGM)
 
             deltaTime -= 1
             timeDiff += 1
+
             if deltaTime > 0:
                 # Retrieve an OGM from each user's receive queue
                 for key, value in self.network.iteritems():

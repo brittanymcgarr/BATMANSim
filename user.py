@@ -37,7 +37,7 @@ class User:
         # Received OGMs convention: <key>IP : <value> OGM instance
         self.receivedOGMs = {}
         self.sequence = 0
-        self.keepAlive = 180
+        self.keepAlive = 300
 
     # Create and broadcast OGMs for all neighbors and stick in send queue
     def broadcastOGMs(self, deltaTime):
@@ -81,12 +81,11 @@ class User:
                 # If the found flag was not triggered, a new neighbor was detected
                 if not found:
                     self.neighbors.append(self.allNet[incomingOGM.originatorIP])
+                    self.receivedOGMs[incomingOGM.originatorIP] = incomingOGM
 
             # Check the received OGMs if this is the latest sequence number
             if incomingOGM.originatorIP in self.receivedOGMs.keys():
-                if self.receivedOGMs[incomingOGM.originatorIP].sequence > incomingOGM.sequence:
-                    return False
-                else:
+                if self.receivedOGMs[incomingOGM.originatorIP].sequence < incomingOGM.sequence:
                     self.receivedOGMs[incomingOGM.originatorIP] = incomingOGM
             else:
                 self.receivedOGMs[incomingOGM.originatorIP] = incomingOGM
@@ -196,10 +195,3 @@ class User:
             if each.TTL <= 0:
                 self.receiveQueue.remove(each)
 
-        for key, value in self.receivedOGMs.iteritems():
-            value.TTL -= deltaTime
-            if value.TTL <= 0:
-                ip = value.originatorIP
-                for neighbor in self.neighbors:
-                    if neighbor.IP == ip:
-                        self.neighbors.remove(neighbor)
