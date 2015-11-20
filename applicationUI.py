@@ -61,6 +61,11 @@ class ApplicationUI:
         self.neighbors2_list = []
         self.neighbors3_list = []
         self.neighbors4_list = []
+        self.msgSender_str = StringVar()
+        self.msgRcvr_str = StringVar()
+        self.msgTTL_int = IntVar()
+        self.msgTTL_int.set(10)
+        self.msgMessage_str = StringVar()
         self.timeStep_int = IntVar()
 
         # Piped messages for display
@@ -159,6 +164,18 @@ class ApplicationUI:
         self.remove3_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser3)
         self.remove4_button = Button(self.left_frame, text="Remove Node", width=nodeButton_width, command=self.removeUser4)
 
+        # Create the message buttons and entries
+        self.message_button = Button(self.left_frame, text="Create Message", width=button_width, command=self.displayMessageEntry)
+        self.submitMessage_button = Button(self.left_frame, text="Submit Message", width=nodeButton_width, command=self.sendMessage)
+        self.msgSender_label = Label(self.left_frame, text="Sender IP:", width=entry_width)
+        self.msgSender_entry = Entry(self.left_frame, width=entry_width, textvariable=self.msgSender_str)
+        self.msgRcvr_label = Label(self.left_frame, text="Destination IP:", width=entry_width)
+        self.msgRcvr_entry = Entry(self.left_frame, width=entry_width, textvariable=self.msgRcvr_str)
+        self.msgTTL_label = Label(self.left_frame, text="TTL:", width=entry_width)
+        self.msgTTL_entry = Entry(self.left_frame, width=entry_width, textvariable=self.msgTTL_int)
+        self.msgMessage_label = Label(self.left_frame, text="Message:", width=entry_width)
+        self.msgMessage_entry = Entry(self.left_frame, width=entry_width, textvariable=self.msgMessage_str)
+
         # Create the simulation time entry and start simulation buttons
         self.timeStep_label = Label(self.left_frame, text="Run Time (100msec):", width=entry_width)
         self.timeStep_entry = Entry(self.left_frame, width=entry_width, textvariable=self.timeStep_int)
@@ -179,12 +196,13 @@ class ApplicationUI:
         self.node2_button.grid(row=1, column=0, columnspan=2)
         self.node3_button.grid(row=2, column=0, columnspan=2)
         self.node4_button.grid(row=3, column=0, columnspan=2)
+        self.message_button.grid(row=4, column=0, columnspan=2)
 
         # Time step widgets
-        self.timeStep_label.grid(row=4, column=0)
-        self.timeStep_entry.grid(row=4, column=1)
-        self.start_button.grid(row=5, column=0)
-        self.report_button.grid(row=5, column=1)
+        self.timeStep_label.grid(row=5, column=0)
+        self.timeStep_entry.grid(row=5, column=1)
+        self.start_button.grid(row=6, column=0)
+        self.report_button.grid(row=6, column=1)
 
     # Add a constructed user node to the system
     def addUser1(self):
@@ -310,13 +328,20 @@ class ApplicationUI:
                 neighbor = self.controller.network[self.neighbor4_str.get()]
                 userNode.removeNeighbor(neighbor)
 
+    # Create and send a message (wrapped in OGM class)
+    def sendMessage(self):
+        # Check for the source IP in the network and create the message with the sender's information
+        if self.msgSender_str.get() in self.controller.network.keys():
+            sender = self.controller.network[self.msgSender_str.get()]
+            sender.sendMessage(destination=self.msgRcvr_str.get(), ttl=self.msgTTL_int.get(), data=self.msgMessage_str.get())
+
     # Clear the network and restart
     def clearNetwork(self):
         self.controller.clear()
 
     # Print a report of the console log to a file
     def printConsole(self):
-        fileOUT = open("report" + "_" + time.strftime("%d%m%Y"), "w")
+        fileOUT = open("report" + "_" + time.strftime("%d%m%Y%H%M"), "w")
         for line in self.messagePipe:
             if not isinstance(line, basestring):
                 outLine = ", ".join(line)
@@ -377,10 +402,11 @@ class ApplicationUI:
         self.hideUserInput1()
         self.node3_button.grid(row=7, column=0, columnspan=2)
         self.node4_button.grid(row=8, column=0, columnspan=2)
-        self.timeStep_label.grid(row=9, column=0)
-        self.timeStep_entry.grid(row=9, column=1)
-        self.start_button.grid(row=10, column=0)
-        self.report_button.grid(row=10, column=1)
+        self.message_button.grid(row=9, column=0, columnspan=2)
+        self.timeStep_label.grid(row=10, column=0)
+        self.timeStep_entry.grid(row=10, column=1)
+        self.start_button.grid(row=11, column=0)
+        self.report_button.grid(row=11, column=1)
 
     def displayUserInput2(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -398,10 +424,11 @@ class ApplicationUI:
         self.remove2_button.grid(row=6, column=1)
         self.node3_button.grid(row=7, column=0, columnspan=2)
         self.node4_button.grid(row=8, column=0, columnspan=2)
-        self.timeStep_label.grid(row=9, column=0)
-        self.timeStep_entry.grid(row=9, column=1)
-        self.start_button.grid(row=10, column=0)
-        self.report_button.grid(row=10, column=1)
+        self.message_button.grid(row=9, column=0, columnspan=2)
+        self.timeStep_label.grid(row=10, column=0)
+        self.timeStep_entry.grid(row=10, column=1)
+        self.start_button.grid(row=11, column=0)
+        self.report_button.grid(row=11, column=1)
 
     def displayUserInput3(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -419,10 +446,11 @@ class ApplicationUI:
         self.remNbr3_button.grid(row=7, column=0)
         self.remove3_button.grid(row=7, column=1)
         self.node4_button.grid(row=8, column=0, columnspan=2)
-        self.timeStep_label.grid(row=9, column=0)
-        self.timeStep_entry.grid(row=9, column=1)
-        self.start_button.grid(row=10, column=0)
-        self.report_button.grid(row=10, column=1)
+        self.message_button.grid(row=9, column=0, columnspan=2)
+        self.timeStep_label.grid(row=10, column=0)
+        self.timeStep_entry.grid(row=10, column=1)
+        self.start_button.grid(row=11, column=0)
+        self.report_button.grid(row=11, column=1)
 
     def displayUserInput4(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -440,10 +468,36 @@ class ApplicationUI:
         self.add4_button.grid(row=7, column=1)
         self.remNbr4_button.grid(row=8, column=0)
         self.remove4_button.grid(row=8, column=1)
-        self.timeStep_label.grid(row=9, column=0)
-        self.timeStep_entry.grid(row=9, column=1)
-        self.start_button.grid(row=10, column=0)
-        self.report_button.grid(row=10, column=1)
+        self.message_button.grid(row=9, column=0, columnspan=2)
+        self.timeStep_label.grid(row=10, column=0)
+        self.timeStep_entry.grid(row=10, column=1)
+        self.start_button.grid(row=11, column=0)
+        self.report_button.grid(row=11, column=1)
+
+    # Display the message creator drop down
+    def displayMessageEntry(self):
+        self.node1_button.grid(row=0, column=0, columnspan=2)
+        self.hideUserInput1()
+        self.hideUserInput2()
+        self.node2_button.grid(row=1, column=0, columnspan=2)
+        self.node3_button.grid(row=2, column=0, columnspan=2)
+        self.node4_button.grid(row=3, column=0, columnspan=2)
+
+        self.message_button.grid(row=4, column=0, columnspan=2)
+        self.msgSender_label.grid(row=5, column=0)
+        self.msgSender_entry.grid(row=5, column=1)
+        self.msgRcvr_label.grid(row=6, column=0)
+        self.msgRcvr_entry.grid(row=6, column=1)
+        self.msgTTL_label.grid(row=7, column=0)
+        self.msgTTL_entry.grid(row=7, column=1)
+        self.msgMessage_label.grid(row=8, column=0)
+        self.msgMessage_entry.grid(row=8, column=1)
+        self.submitMessage_button.grid(row=9, column=0, columnspan=2)
+
+        self.timeStep_label.grid(row=10, column=0)
+        self.timeStep_entry.grid(row=10, column=1)
+        self.start_button.grid(row=11, column=0)
+        self.report_button.grid(row=11, column=1)
 
     # Clear the node input display for the specified node
     def hideUserInput1(self):
@@ -477,6 +531,15 @@ class ApplicationUI:
         self.add4_button.grid_forget()
         self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
+        self.msgSender_label.grid_forget()
+        self.msgSender_entry.grid_forget()
+        self.msgRcvr_label.grid_forget()
+        self.msgRcvr_entry.grid_forget()
+        self.msgTTL_label.grid_forget()
+        self.msgTTL_entry.grid_forget()
+        self.msgMessage_label.grid_forget()
+        self.msgMessage_entry.grid_forget()
+        self.submitMessage_button.grid_forget()
 
     def hideUserInput2(self):
         self.ip1_label.grid_forget()
@@ -509,6 +572,15 @@ class ApplicationUI:
         self.add4_button.grid_forget()
         self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
+        self.msgSender_label.grid_forget()
+        self.msgSender_entry.grid_forget()
+        self.msgRcvr_label.grid_forget()
+        self.msgRcvr_entry.grid_forget()
+        self.msgTTL_label.grid_forget()
+        self.msgTTL_entry.grid_forget()
+        self.msgMessage_label.grid_forget()
+        self.msgMessage_entry.grid_forget()
+        self.submitMessage_button.grid_forget()
 
     def hideUserInput3(self):
         self.ip1_label.grid_forget()
@@ -541,6 +613,15 @@ class ApplicationUI:
         self.add4_button.grid_forget()
         self.remNbr4_button.grid_forget()
         self.remove4_button.grid_forget()
+        self.msgSender_label.grid_forget()
+        self.msgSender_entry.grid_forget()
+        self.msgRcvr_label.grid_forget()
+        self.msgRcvr_entry.grid_forget()
+        self.msgTTL_label.grid_forget()
+        self.msgTTL_entry.grid_forget()
+        self.msgMessage_label.grid_forget()
+        self.msgMessage_entry.grid_forget()
+        self.submitMessage_button.grid_forget()
 
     def hideUserInput4(self):
         self.ip1_label.grid_forget()
@@ -573,6 +654,15 @@ class ApplicationUI:
         self.add3_button.grid_forget()
         self.remNbr3_button.grid_forget()
         self.remove3_button.grid_forget()
+        self.msgSender_label.grid_forget()
+        self.msgSender_entry.grid_forget()
+        self.msgRcvr_label.grid_forget()
+        self.msgRcvr_entry.grid_forget()
+        self.msgTTL_label.grid_forget()
+        self.msgTTL_entry.grid_forget()
+        self.msgMessage_label.grid_forget()
+        self.msgMessage_entry.grid_forget()
+        self.submitMessage_button.grid_forget()
 
     # Show the user manual
     def showManual(self):

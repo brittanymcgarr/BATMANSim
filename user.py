@@ -37,6 +37,10 @@ class User:
 
         # Received OGMs convention: <key>IP : <value> OGM instance
         self.receivedOGMs = {}
+
+        # Received messages convention: <key>Origin IP : <value> OGM instance
+        self.receivedMessages = {}
+
         self.sequence = 0
         self.keepAlive = 300
 
@@ -70,6 +74,21 @@ class User:
 
             # Update the trace route listing (just IP address)
             incomingOGM.traceroute.append(self.IP)
+
+            # Check for data payload and treat as message if so
+            if incomingOGM.payload != "":
+                # Check if the message has reached its destination
+                if incomingOGM.destinationIP == self.IP:
+                    self.receivedMessages[incomingOGM.originatorIP] = incomingOGM
+                else:
+                    # Try to forward the message through the system
+                    if incomingOGM.destinationIP in self.receivedOGMs.keys():
+                        forwardHop = self.receivedOGMs[incomingOGM.destinationIP]
+                        incomingOGM.nextHop = forwardHop.senderIP
+                        incomingOGM.TTL -= 1
+
+                        if incomingOGM.TTL > 0:
+                            self.sendQueue.append(incomingOGM)
 
             # Check the originator and sender IPs
             if incomingOGM.originatorIP == incomingOGM.senderIP:
@@ -120,6 +139,26 @@ class User:
     def removeNeighbor(self, neighbor):
         self.neighbors.remove(neighbor)
 
+    # Create and send a message
+    def sendMessage(self, destination="", ttl=0, data=""):
+        if destination != "" and ttl > 0:
+            found = False
+            for index in self.neighbors:
+                if destination == index.IP:
+                    found = True
+
+            # Check if the destination is an immediate neighbor
+            if found:
+                outgoing = ogm.OGM(origIP=self.IP, nextHop=destination, ttl=ttl, destIP=destination, message=data)
+                self.sendQueue.append(outgoing)
+            else:
+                # Check the network topology for any received OGMs and send to the next hop neighbor
+                found = None
+                for key, value in self.receivedOGMs.iteritems():
+                    if key == destination:
+                        outgoing = ogm.OGM(origIP=self.IP, nextHop=value.senderIP, ttl=ttl, destIP=destination, message=data)
+                        self.sendQueue.append(outgoing)
+
     # Report current state to string
     def reportString(self):
         ip = "IP: " + str(self.IP) + "\n"
@@ -136,15 +175,20 @@ class User:
         # Report Send queue
         totSending = "Send Queue:\n"
         for send in self.sendQueue:
-            totSending += "Sequence: " + str(send.sequence) + " "
+            totSending += "Sender: " + str(send.senderIP) + " Sequence: " + str(send.sequence) + "\n"
         totSending += "\n"
 
         # Report Receive Queue
         totReceiving = "Received Queue:\n"
         for receipt in self.receiveQueue:
-            totReceiving += "Sender: " + str(receipt.senderIP) + " Sequence: " \
-                            + str(receipt.sequence) + "\n"
+            totReceiving += "Sender: " + str(receipt.senderIP) + " Sequence: " + str(receipt.sequence) + "\n"
         totReceiving += "\n"
+
+        # Check for messages received
+        totMessages = "Messages Received:\n"
+        for ip,message in self.receivedMessages.iteritems():
+            totMessages += "Sender: " + str(ip) + " Data:\n" + str(message.payload) + "\n"
+        totMessages += "\n"
 
         # Repeat for OGMs
         totOGMs = "Network Topology: "
@@ -152,7 +196,7 @@ class User:
             totOGMs += str(self.receivedOGMs[ogmIndex].originatorIP) + " "
         totOGMs += "\n\n"
 
-        return ip + bct + direction + seq + totNeighbors + totSending + totReceiving + totOGMs
+        return ip + bct + direction + seq + totNeighbors + totSending + totReceiving + totMessages + totOGMs
 
     # The sequel of the hit action film: reportString()
     def reportFile(self):

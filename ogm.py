@@ -17,7 +17,7 @@ import copy
 class OGM:
     # Constructor
     def __init__(self, origIP="0.0.0.0", sendIP="0.0.0.0", nextHop="0.0.0.0", seq=0,
-                 ttl=300, direction=False):
+                 ttl=300, direction=False, destIP="", message=""):
         self.originatorIP = origIP
         self.senderIP = sendIP
         self.nextHop = nextHop
@@ -25,6 +25,8 @@ class OGM:
         self.TTL = ttl
         self.directional = direction
         self.traceroute = [self.senderIP]
+        self.destinationIP = destIP
+        self.payload = message
 
     # Copy method
     def copy(self):
