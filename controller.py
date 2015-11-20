@@ -69,9 +69,6 @@ class Controller:
         timeDiff = 0
         # All actions performed by controller for each step in time
         while deltaTime > 0:
-            deltaTime -= 1
-            timeDiff += 1
-
             # Call user node tick functions
             for key, value in self.network.iteritems():
                 value.tick(timeDiff)

@@ -355,7 +355,7 @@ class ApplicationUI:
     # Run the program for the specified time
     def runNetwork(self):
         if self.timeStep_int.get() > 0:
-            self.messagePipe.append("\n\nRun Time: " + str(self.timeStep_int.get()) + "\n")
+            self.messagePipe.append("\n\nRun Time: " + str(self.timeStep_int.get()) + "\n\n")
             self.console.insert(END, self.messagePipe[-1])
             self.controller.tick(self.timeStep_int.get())
             self.reportConsole()

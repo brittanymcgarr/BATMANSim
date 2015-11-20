@@ -12,6 +12,7 @@
 
 import ogm as ogm
 import time
+import copy
 
 
 class User:
@@ -101,7 +102,7 @@ class User:
 
                 for index in self.neighbors:
                     if incomingOGM.originatorIP is not index.IP:
-                        outgoingOGM = incomingOGM
+                        outgoingOGM = incomingOGM.copy()
                         outgoingOGM.nextHop = index.IP
                         self.sendQueue.append(outgoingOGM)
 
@@ -195,3 +196,10 @@ class User:
             if each.TTL <= 0:
                 self.receiveQueue.remove(each)
 
+        for key, value in self.receivedOGMs.iteritems():
+            value.TTL -= deltaTime
+            if value.TTL <= 0:
+                ip = value.originatorIP
+                for neighbor in self.neighbors:
+                    if neighbor.IP == ip:
+                        self.neighbors.remove(neighbor)
