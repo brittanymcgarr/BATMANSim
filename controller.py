@@ -11,6 +11,7 @@
 
 import ogm
 import user
+import time
 
 
 class Controller:
@@ -85,6 +86,14 @@ class Controller:
             timeDiff += 1
 
             if deltaTime > 0:
+                # Retrieve an OGM from each user's receive queue
+                for key, value in self.network.iteritems():
+                    value.receiveOGM()
+
+            deltaTime -= 1
+            timeDiff += 1
+
+            if deltaTime > 0:
                 # Transport one of the generated OGMs to their next hops from each node
                 for key, value in self.network.iteritems():
                     if len(value.sendQueue) > 0:
@@ -96,10 +105,40 @@ class Controller:
                         else:
                             self.lostOGMs.append(outgoingOGM)
 
-            deltaTime -= 1
-            timeDiff += 1
 
-            if deltaTime > 0:
-                # Retrieve an OGM from each user's receive queue
-                for key, value in self.network.iteritems():
-                    value.receiveOGM()
+# Debugging - Test system and report directly to file
+if __name__ == '__main__':
+    controller = Controller()
+    user1 = user.User(ip="192.164.0.1", castTime=5)
+    user2 = user.User(ip="192.164.0.2", castTime=5)
+    user3 = user.User(ip="192.164.0.3", castTime=5)
+
+    user1.neighbors.append(user2)
+    user2.neighbors.append(user1)
+    user3.neighbors.append(user2)
+
+    controller.addUser(user1)
+    controller.addUser(user2)
+    controller.addUser(user3)
+
+    messages = []
+
+    messages.append("\n\nRun Time: 6000 msec\n\n")
+    controller.tick(60)
+    messages.append(controller.reportString())
+
+    for node in controller.network:
+        messages.append(controller.network[node].reportString())
+
+    fileOUT = open("report" + "_" + time.strftime("%d%m%Y%H%M"), "w")
+
+    for line in messages:
+        if not isinstance(line, basestring):
+            outLine = ", ".join(line)
+            fileOUT.write(outLine)
+        else:
+            fileOUT.write(line)
+
+        fileOUT.write("\n")
+
+    fileOUT.close()

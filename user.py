@@ -90,6 +90,8 @@ class User:
                         if incomingOGM.TTL > 0:
                             self.sendQueue.append(incomingOGM)
 
+                return True
+
             # Check the originator and sender IPs
             if incomingOGM.originatorIP == incomingOGM.senderIP:
                 # If they matched, the OGM goes directly to a neighbor, check the list
@@ -115,14 +117,15 @@ class User:
 
             # Check for a live packet
             if incomingOGM.TTL > 0:
-                # Replace the sender's IP with the current user's and broadcast
-                incomingOGM.senderIP = self.IP
-                incomingOGM.directional = self.directional
-
                 for index in self.neighbors:
                     if incomingOGM.originatorIP is not index.IP:
                         outgoingOGM = incomingOGM.copy()
+
+                        # Replace the sender's IP with the current user's and broadcast
+                        outgoingOGM.senderIP = self.IP
+                        outgoingOGM.directional = self.directional
                         outgoingOGM.nextHop = index.IP
+                        
                         self.sendQueue.append(outgoingOGM)
 
     # Add unique neighbor to the user's listing (used for initial state and for altering in GUI)
@@ -149,15 +152,19 @@ class User:
 
             # Check if the destination is an immediate neighbor
             if found:
-                outgoing = ogm.OGM(origIP=self.IP, nextHop=destination, ttl=ttl, destIP=destination, message=data)
+                outgoing = ogm.OGM(origIP=self.IP, sendIP=self.IP, nextHop=destination, seq=200, ttl=ttl, destIP=destination, message=data)
                 self.sendQueue.append(outgoing)
             else:
                 # Check the network topology for any received OGMs and send to the next hop neighbor
                 found = None
                 for key, value in self.receivedOGMs.iteritems():
                     if key == destination:
-                        outgoing = ogm.OGM(origIP=self.IP, nextHop=value.senderIP, ttl=ttl, destIP=destination, message=data)
-                        self.sendQueue.append(outgoing)
+                        found = value
+
+                # The destination was found in known OGMs, so forward to the next hop sender
+                if found is not None:
+                    outgoing = ogm.OGM(origIP=self.IP, sendIP=self.IP, nextHop=found.senderIP, seq=200, ttl=ttl, destIP=destination, message=data)
+                    self.sendQueue.append(outgoing)
 
     # Report current state to string
     def reportString(self):
@@ -231,19 +238,45 @@ class User:
     def tick(self, deltaTime):
         # Update the send and receive queues
         for each in self.sendQueue:
+            removal = False
+            # Check for lower-value sequences and mark for removal if found
+            if each.originatorIP in self.receivedOGMs.keys():
+                if each.sequence < self.receivedOGMs[each.originatorIP].sequence:
+                    removal = True
+
+            # Check for exceeded TTL and mark for removal if 0 or lower
             each.TTL -= deltaTime
             if each.TTL <= 0:
+                removal = True
+
+            if removal:
                 self.sendQueue.remove(each)
 
         for each in self.receiveQueue:
+            removal = False
+            if each.originatorIP in self.receivedOGMs.keys():
+                if each.sequence < self.receivedOGMs[each.originatorIP].sequence:
+                    removal = True
+
             each.TTL -= deltaTime
             if each.TTL <= 0:
+                removal = True
+
+            if removal:
                 self.receiveQueue.remove(each)
 
+        ipKeys = []
         for key, value in self.receivedOGMs.iteritems():
             value.TTL -= deltaTime
             if value.TTL <= 0:
                 ip = value.originatorIP
+
                 for neighbor in self.neighbors:
                     if neighbor.IP == ip:
                         self.neighbors.remove(neighbor)
+
+                ipKeys.append(ip)
+
+        if len(ipKeys) > 0:
+            for each in ipKeys:
+                self.receivedOGMs.pop(each)

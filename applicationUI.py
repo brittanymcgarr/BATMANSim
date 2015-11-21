@@ -48,10 +48,10 @@ class ApplicationUI:
         self.castTime2_int = IntVar()
         self.castTime3_int = IntVar()
         self.castTime4_int = IntVar()
-        self.castTime1_int.set(5)
-        self.castTime2_int.set(5)
-        self.castTime3_int.set(5)
-        self.castTime4_int.set(5)
+        self.castTime1_int.set(10)
+        self.castTime2_int.set(10)
+        self.castTime3_int.set(10)
+        self.castTime4_int.set(10)
         self.neighbor1_str = StringVar()
         self.neighbor2_str = StringVar()
         self.neighbor3_str = StringVar()
@@ -64,7 +64,7 @@ class ApplicationUI:
         self.msgSender_str = StringVar()
         self.msgRcvr_str = StringVar()
         self.msgTTL_int = IntVar()
-        self.msgTTL_int.set(10)
+        self.msgTTL_int.set(180)
         self.msgMessage_str = StringVar()
         self.timeStep_int = IntVar()
 
@@ -339,7 +339,7 @@ class ApplicationUI:
     def clearNetwork(self):
         self.controller.clear()
 
-    # Print a report of the console log to a file
+    # Print a report of the console log to a file titled with today's data and time
     def printConsole(self):
         fileOUT = open("report" + "_" + time.strftime("%d%m%Y%H%M"), "w")
         for line in self.messagePipe:
@@ -350,6 +350,9 @@ class ApplicationUI:
                 fileOUT.write(line)
             fileOUT.write("\n")
         fileOUT.close()
+
+        # Clear the message pipeline
+        self.messagePipe = []
 
     # Show the network state in the console
     def reportConsole(self):
