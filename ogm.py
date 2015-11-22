@@ -40,6 +40,13 @@ class OGM:
         seq = "Sequence Number: " + str(self.sequence) + "\n"
         ttl = "TTL: " + str(self.TTL) + "\n"
         direction = "Uni-Directional? " + str(self.directional) + "\n"
+        destIP = "Destination IP: " + str(self.destinationIP) + "\n"
+
+        trace = "Trace Route:\n"
+        for each in self.traceroute:
+            trace += str(each) + " "
+        trace += "\n"
+
         payload = "Data: " + str(self.payload) + "\n\n"
 
-        return oIP + sendIP + nHop + seq + ttl + direction + payload
+        return oIP + sendIP + nHop + seq + ttl + direction + destIP + trace + payload

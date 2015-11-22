@@ -29,6 +29,8 @@ class User:
         self.broadcastTime = castTime
         self.timeToCast = 0
         self.directional = direction
+        self.spoof = False
+        self.spoofIP = ""
 
         # Send and receive queues should have OGM or packet (datagram)
         self.sendQueue = []
@@ -51,8 +53,15 @@ class User:
 
         # Create an OGM for each neighbor and place in the send queue
         if self.timeToCast % self.broadcastTime == 0:
+            # Check for spoofing
+            ip = ""
+            if self.spoof:
+                ip = self.spoofIP
+            else:
+                ip = self.IP
+
             for neighbor in self.neighbors:
-                outgoingOGM = ogm.OGM(origIP=self.IP, sendIP=self.IP, seq=self.sequence,
+                outgoingOGM = ogm.OGM(origIP=ip, sendIP=self.IP, seq=self.sequence,
                                       ttl=self.keepAlive, direction=self.directional)
                 outgoingOGM.nextHop = neighbor.IP
                 self.sendQueue.append(outgoingOGM)

@@ -66,6 +66,8 @@ class ApplicationUI:
         self.msgTTL_int = IntVar()
         self.msgTTL_int.set(180)
         self.msgMessage_str = StringVar()
+        self.spoofAttacker_str = StringVar()
+        self.spoofVictim_str = StringVar()
         self.timeStep_int = IntVar()
 
         # Piped messages for display
@@ -176,6 +178,14 @@ class ApplicationUI:
         self.msgMessage_label = Label(self.left_frame, text="Message:", width=entry_width)
         self.msgMessage_entry = Entry(self.left_frame, width=entry_width, textvariable=self.msgMessage_str)
 
+        # Create the spoof message buttons and entries
+        self.spoof_button = Button(self.left_frame, text="Create Spoof", width=button_width, command=self.displaySpoofEntry)
+        self.submitSpoof_button = Button(self.left_frame, text="Submit Spoof", width=nodeButton_width, command=self.addSpoof)
+        self.attackerIP_label = Label(self.left_frame, text="Attacker IP:", width=entry_width)
+        self.attackerIP_entry = Entry(self.left_frame, width=entry_width, textvariable=self.spoofAttacker_str)
+        self.victimIP_label = Label(self.left_frame, text="Victim IP:", width=entry_width)
+        self.victimIP_entry = Entry(self.left_frame, width=entry_width, textvariable=self.spoofVictim_str)
+
         # Create the simulation time entry and start simulation buttons
         self.timeStep_label = Label(self.left_frame, text="Run Time (100msec):", width=entry_width)
         self.timeStep_entry = Entry(self.left_frame, width=entry_width, textvariable=self.timeStep_int)
@@ -198,12 +208,13 @@ class ApplicationUI:
         self.node3_button.grid(row=2, column=0, columnspan=2)
         self.node4_button.grid(row=3, column=0, columnspan=2)
         self.message_button.grid(row=4, column=0, columnspan=2)
+        self.spoof_button.grid(row=5, column=0, columnspan=2)
 
         # Time step widgets
-        self.timeStep_label.grid(row=5, column=0)
-        self.timeStep_entry.grid(row=5, column=1)
-        self.start_button.grid(row=6, column=0)
-        self.report_button.grid(row=6, column=1)
+        self.timeStep_label.grid(row=6, column=0)
+        self.timeStep_entry.grid(row=6, column=1)
+        self.start_button.grid(row=7, column=0)
+        self.report_button.grid(row=7, column=1)
 
     # Add a constructed user node to the system
     def addUser1(self):
@@ -329,6 +340,13 @@ class ApplicationUI:
                 neighbor = self.controller.network[self.neighbor4_str.get()]
                 userNode.removeNeighbor(neighbor)
 
+    # Create attacker node by collecting spoof data
+    def addSpoof(self):
+        if self.spoofAttacker_str.get() in self.controller.network.keys():
+            userNode = self.controller.network[self.spoofAttacker_str.get()]
+            userNode.spoof = True
+            userNode.spoofIP = self.spoofVictim_str.get()
+
     # Create and send a message (wrapped in OGM class)
     def sendMessage(self):
         # Check for the source IP in the network and create the message with the sender's information
@@ -435,10 +453,11 @@ class ApplicationUI:
         self.node3_button.grid(row=7, column=0, columnspan=2)
         self.node4_button.grid(row=8, column=0, columnspan=2)
         self.message_button.grid(row=9, column=0, columnspan=2)
-        self.timeStep_label.grid(row=10, column=0)
-        self.timeStep_entry.grid(row=10, column=1)
-        self.start_button.grid(row=11, column=0)
-        self.report_button.grid(row=11, column=1)
+        self.spoof_button.grid(row=10, column=0, columnspan=2)
+        self.timeStep_label.grid(row=11, column=0)
+        self.timeStep_entry.grid(row=11, column=1)
+        self.start_button.grid(row=12, column=0)
+        self.report_button.grid(row=12, column=1)
 
     def displayUserInput2(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -457,10 +476,11 @@ class ApplicationUI:
         self.node3_button.grid(row=7, column=0, columnspan=2)
         self.node4_button.grid(row=8, column=0, columnspan=2)
         self.message_button.grid(row=9, column=0, columnspan=2)
-        self.timeStep_label.grid(row=10, column=0)
-        self.timeStep_entry.grid(row=10, column=1)
-        self.start_button.grid(row=11, column=0)
-        self.report_button.grid(row=11, column=1)
+        self.spoof_button.grid(row=10, column=0, columnspan=2)
+        self.timeStep_label.grid(row=11, column=0)
+        self.timeStep_entry.grid(row=11, column=1)
+        self.start_button.grid(row=12, column=0)
+        self.report_button.grid(row=12, column=1)
 
     def displayUserInput3(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -479,10 +499,11 @@ class ApplicationUI:
         self.remove3_button.grid(row=7, column=1)
         self.node4_button.grid(row=8, column=0, columnspan=2)
         self.message_button.grid(row=9, column=0, columnspan=2)
-        self.timeStep_label.grid(row=10, column=0)
-        self.timeStep_entry.grid(row=10, column=1)
-        self.start_button.grid(row=11, column=0)
-        self.report_button.grid(row=11, column=1)
+        self.spoof_button.grid(row=10, column=0, columnspan=2)
+        self.timeStep_label.grid(row=11, column=0)
+        self.timeStep_entry.grid(row=11, column=1)
+        self.start_button.grid(row=12, column=0)
+        self.report_button.grid(row=12, column=1)
 
     def displayUserInput4(self):
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -501,10 +522,11 @@ class ApplicationUI:
         self.remNbr4_button.grid(row=8, column=0)
         self.remove4_button.grid(row=8, column=1)
         self.message_button.grid(row=9, column=0, columnspan=2)
-        self.timeStep_label.grid(row=10, column=0)
-        self.timeStep_entry.grid(row=10, column=1)
-        self.start_button.grid(row=11, column=0)
-        self.report_button.grid(row=11, column=1)
+        self.spoof_button.grid(row=10, column=0, columnspan=2)
+        self.timeStep_label.grid(row=11, column=0)
+        self.timeStep_entry.grid(row=11, column=1)
+        self.start_button.grid(row=12, column=0)
+        self.report_button.grid(row=12, column=1)
 
     # Display the message creator drop down
     def displayMessageEntry(self):
@@ -526,10 +548,32 @@ class ApplicationUI:
         self.msgMessage_entry.grid(row=8, column=1)
         self.submitMessage_button.grid(row=9, column=0, columnspan=2)
 
-        self.timeStep_label.grid(row=10, column=0)
-        self.timeStep_entry.grid(row=10, column=1)
-        self.start_button.grid(row=11, column=0)
-        self.report_button.grid(row=11, column=1)
+        self.spoof_button.grid(row=10, column=0, columnspan=2)
+        self.timeStep_label.grid(row=11, column=0)
+        self.timeStep_entry.grid(row=11, column=1)
+        self.start_button.grid(row=12, column=0)
+        self.report_button.grid(row=12, column=1)
+
+    # Display the Spoof entry drop down
+    def displaySpoofEntry(self):
+        self.node1_button.grid(row=0, column=0, columnspan=2)
+        self.hideUserInput4()
+        self.node2_button.grid(row=1, column=0, columnspan=2)
+        self.node3_button.grid(row=2, column=0, columnspan=2)
+        self.node4_button.grid(row=3, column=0, columnspan=2)
+        self.message_button.grid(row=4, column=0, columnspan=2)
+
+        self.spoof_button.grid(row=5, column=0, columnspan=2)
+        self.attackerIP_label.grid(row=6, column=0)
+        self.attackerIP_entry.grid(row=6, column=1)
+        self.victimIP_label.grid(row=7, column=0)
+        self.victimIP_entry.grid(row=7, column=1)
+        self.submitSpoof_button.grid(row=8, column=0, columnspan=2)
+
+        self.timeStep_label.grid(row=9, column=0)
+        self.timeStep_entry.grid(row=9, column=1)
+        self.start_button.grid(row=10, column=0)
+        self.report_button.grid(row=10, column=1)
 
     # Clear the node input display for the specified node
     def hideUserInput1(self):
@@ -572,6 +616,11 @@ class ApplicationUI:
         self.msgMessage_label.grid_forget()
         self.msgMessage_entry.grid_forget()
         self.submitMessage_button.grid_forget()
+        self.attackerIP_label.grid_forget()
+        self.attackerIP_entry.grid_forget()
+        self.victimIP_label.grid_forget()
+        self.victimIP_entry.grid_forget()
+        self.submitSpoof_button.grid_forget()
 
     def hideUserInput2(self):
         self.ip1_label.grid_forget()
@@ -613,6 +662,11 @@ class ApplicationUI:
         self.msgMessage_label.grid_forget()
         self.msgMessage_entry.grid_forget()
         self.submitMessage_button.grid_forget()
+        self.attackerIP_label.grid_forget()
+        self.attackerIP_entry.grid_forget()
+        self.victimIP_label.grid_forget()
+        self.victimIP_entry.grid_forget()
+        self.submitSpoof_button.grid_forget()
 
     def hideUserInput3(self):
         self.ip1_label.grid_forget()
@@ -654,6 +708,11 @@ class ApplicationUI:
         self.msgMessage_label.grid_forget()
         self.msgMessage_entry.grid_forget()
         self.submitMessage_button.grid_forget()
+        self.attackerIP_label.grid_forget()
+        self.attackerIP_entry.grid_forget()
+        self.victimIP_label.grid_forget()
+        self.victimIP_entry.grid_forget()
+        self.submitSpoof_button.grid_forget()
 
     def hideUserInput4(self):
         self.ip1_label.grid_forget()
@@ -695,6 +754,11 @@ class ApplicationUI:
         self.msgMessage_label.grid_forget()
         self.msgMessage_entry.grid_forget()
         self.submitMessage_button.grid_forget()
+        self.attackerIP_label.grid_forget()
+        self.attackerIP_entry.grid_forget()
+        self.victimIP_label.grid_forget()
+        self.victimIP_entry.grid_forget()
+        self.submitSpoof_button.grid_forget()
 
     # Show the user manual
     def showManual(self):
