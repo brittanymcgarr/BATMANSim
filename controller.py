@@ -92,41 +92,27 @@ class Controller:
 
     # Time step function for going through each user in the net and performing transportation
     def tick(self, deltaTime):
-        dTime = deltaTime
-        timeDiff = 0
         # All actions performed by controller for each step in time
-        while dTime > 0:
+        for count in range(0, deltaTime):
             # Call user node tick functions
             for key, value in self.network.iteritems():
-                value.tick(timeDiff)
+                value.tick(count)
 
-            dTime -= 1
-            timeDiff += 1
+            # Generate OGMs for those that have met their time to cast
+            for key, value in self.network.iteritems():
+                value.broadcastOGMs(count)
 
-            if dTime > 0:
-                # Generate OGMs for those that have met their time to cast
-                for key, value in self.network.iteritems():
-                    value.broadcastOGMs(timeDiff)
+            # Retrieve an OGM from each user's receive queue
+            for key, value in self.network.iteritems():
+                value.receiveOGM()
 
-            dTime -= 1
-            timeDiff += 1
-
-            if dTime > 0:
-                # Retrieve an OGM from each user's receive queue
-                for key, value in self.network.iteritems():
-                    value.receiveOGM()
-
-            dTime -= 1
-            timeDiff += 1
-
-            if dTime > 0:
-                # Transport one of the generated OGMs to their next hops from each node
-                for key, value in self.network.iteritems():
-                    if len(value.sendQueue) > 0:
-                        outgoingOGM = value.sendQueue.pop(0)
-                        # Check the network for a valid IP corresponding to next hop
-                        if outgoingOGM.nextHop in self.network.keys():
-                            destination = self.network[outgoingOGM.nextHop]
-                            destination.receiveQueue.append(outgoingOGM)
-                        else:
-                            self.lostOGMs.append(outgoingOGM)
+            # Transport one of the generated OGMs to their next hops from each node
+            for key, value in self.network.iteritems():
+                if len(value.sendQueue) > 0:
+                    outgoingOGM = value.sendQueue.pop(0)
+                    # Check the network for a valid IP corresponding to next hop
+                    if outgoingOGM.nextHop in self.network.keys():
+                        destination = self.network[outgoingOGM.nextHop]
+                        destination.receiveQueue.append(outgoingOGM)
+                    else:
+                        self.lostOGMs.append(outgoingOGM)
