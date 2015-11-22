@@ -1,0 +1,141 @@
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.3
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+IP: 0.0.0.1
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 1
+Neighbors: 0.0.0.2 
+Send Queue:
+
+Received Queue:
+Sender: 0.0.0.2 Sequence: 0
+
+Messages Received:
+
+Network Topology: 
+
+
+0.0.0.1 SEND QUEUE:
+
+0.0.0.1 RECEIVED QUEUE:
+Originator IP: 0.0.0.2
+Sender IP: 0.0.0.2
+Next hop: 0.0.0.1
+Sequence Number: 0
+TTL: 255
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.2 
+Data: 
+
+
+0.0.0.1 RECEIVED OGMs:
+
+0.0.0.1 RECEIVED MESSAGES:
+IP: 0.0.0.3
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 1
+Neighbors: 0.0.0.2 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 0.0.0.2 
+
+
+0.0.0.3 SEND QUEUE:
+
+0.0.0.3 RECEIVED QUEUE:
+
+0.0.0.3 RECEIVED OGMs:
+Originator IP: 0.0.0.2
+Sender IP: 0.0.0.2
+Next hop: 0.0.0.3
+Sequence Number: 0
+TTL: 254
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.2 0.0.0.3 
+Data: 
+
+
+0.0.0.3 RECEIVED MESSAGES:
+IP: 0.0.0.2
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 1
+Neighbors: 0.0.0.3 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 0
+Sender: 0.0.0.2 Sequence: 0
+
+Received Queue:
+Sender: 0.0.0.3 Sequence: 0
+
+Messages Received:
+
+Network Topology: 0.0.0.4 
+
+
+0.0.0.2 SEND QUEUE:
+Originator IP: 0.0.0.4
+Sender IP: 0.0.0.2
+Next hop: 0.0.0.3
+Sequence Number: 0
+TTL: 254
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.1 0.0.0.2 
+Data: 
+
+Originator IP: 0.0.0.4
+Sender IP: 0.0.0.2
+Next hop: 0.0.0.1
+Sequence Number: 0
+TTL: 254
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.1 0.0.0.2 
+Data: 
+
+
+0.0.0.2 RECEIVED QUEUE:
+Originator IP: 0.0.0.3
+Sender IP: 0.0.0.3
+Next hop: 0.0.0.2
+Sequence Number: 0
+TTL: 255
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.3 
+Data: 
+
+
+0.0.0.2 RECEIVED OGMs:
+Originator IP: 0.0.0.4
+Sender IP: 0.0.0.1
+Next hop: 0.0.0.2
+Sequence Number: 0
+TTL: 254
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+0.0.0.1 0.0.0.2 
+Data: 
+
+
+0.0.0.2 RECEIVED MESSAGES:

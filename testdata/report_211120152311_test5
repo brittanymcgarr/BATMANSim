@@ -1,0 +1,1045 @@
+Console Log:
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 1
+
+Messages Received:
+
+Network Topology: A B 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 0
+Sender: B Sequence: 2
+Sender: B Sequence: 2
+Sender: B Sequence: 1
+Sender: B Sequence: 1
+
+Received Queue:
+Sender: A Sequence: 2
+Sender: C Sequence: 2
+Sender: C Sequence: 0
+
+Messages Received:
+
+Network Topology: A C 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 2
+
+Messages Received:
+
+Network Topology: A B 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+Sender: A Sequence: 2
+
+Messages Received:
+
+Network Topology: A C 
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 2
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 8
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 8
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 8
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 8
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 13
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 13
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 13
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 13
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 15
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 15
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 18
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 18
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 18
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 18
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+OGM source IP: ASequence: 18
+OGM source IP: CSequence: 18
+OGM source IP: ASequence: 19
+OGM source IP: CSequence: 19
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 20
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 20
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+OGM source IP: ASequence: 18
+OGM source IP: CSequence: 18
+OGM source IP: ASequence: 19
+OGM source IP: CSequence: 19
+OGM source IP: ASequence: 20
+OGM source IP: CSequence: 20
+OGM source IP: ASequence: 21
+OGM source IP: CSequence: 21
+OGM source IP: ASequence: 22
+OGM source IP: CSequence: 22
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 23
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 23
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+OGM source IP: ASequence: 18
+OGM source IP: CSequence: 18
+OGM source IP: ASequence: 19
+OGM source IP: CSequence: 19
+OGM source IP: ASequence: 20
+OGM source IP: CSequence: 20
+OGM source IP: ASequence: 21
+OGM source IP: CSequence: 21
+OGM source IP: ASequence: 22
+OGM source IP: CSequence: 22
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 23
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 23
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B 
+
+

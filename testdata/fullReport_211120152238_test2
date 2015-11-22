@@ -1,0 +1,185 @@
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+IP: A
+OGM Interval Time: 4
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+Sender: A Sequence: 2
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+A SEND QUEUE:
+Originator IP: A
+Sender IP: A
+Next hop: B
+Sequence Number: 2
+TTL: 300
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+A 
+Data: 
+
+
+A RECEIVED QUEUE:
+
+A RECEIVED OGMs:
+Originator IP: C
+Sender IP: B
+Next hop: A
+Sequence Number: 2
+TTL: 284
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+C B A 
+Data: 
+
+Originator IP: B
+Sender IP: B
+Next hop: A
+Sequence Number: 2
+TTL: 289
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+B A 
+Data: 
+
+
+A RECEIVED MESSAGES:
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 1
+
+Messages Received:
+
+Network Topology: A B 
+
+
+C SEND QUEUE:
+
+C RECEIVED QUEUE:
+Originator IP: A
+Sender IP: B
+Next hop: C
+Sequence Number: 1
+TTL: 295
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+A B 
+Data: 
+
+
+C RECEIVED OGMs:
+Originator IP: A
+Sender IP: B
+Next hop: C
+Sequence Number: 0
+TTL: 278
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+A B C 
+Data: 
+
+Originator IP: B
+Sender IP: B
+Next hop: C
+Sequence Number: 2
+TTL: 285
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+B C 
+Data: 
+
+
+C RECEIVED MESSAGES:
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+Sender: A Sequence: 2
+Sender: C Sequence: 0
+
+Messages Received:
+
+Network Topology: A C 
+
+
+B SEND QUEUE:
+
+B RECEIVED QUEUE:
+Originator IP: C
+Sender IP: A
+Next hop: B
+Sequence Number: 2
+TTL: 284
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+C B A 
+Data: 
+
+Originator IP: A
+Sender IP: C
+Next hop: B
+Sequence Number: 0
+TTL: 276
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+A B C B C 
+Data: 
+
+
+B RECEIVED OGMs:
+Originator IP: A
+Sender IP: A
+Next hop: B
+Sequence Number: 1
+TTL: 295
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+A B 
+Data: 
+
+Originator IP: C
+Sender IP: C
+Next hop: B
+Sequence Number: 2
+TTL: 285
+Uni-Directional? False
+Destination IP: 
+Trace Route:
+C B 
+Data: 
+
+
+B RECEIVED MESSAGES:

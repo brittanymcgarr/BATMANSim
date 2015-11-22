@@ -1,0 +1,263 @@
+Console Log:
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 0.0.0.1 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 1
+Neighbors: 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 1
+Neighbors: 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 0
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 2
+Neighbors: 
+Send Queue:
+
+Received Queue:
+Sender: 0.0.0.2 Sequence: 0
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 2
+Neighbors: 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 1
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: 0.0.0.2 
+Send Queue:
+Sender: 0.0.0.1 Sequence: 2
+
+Received Queue:
+Sender: 0.0.0.2 Sequence: 1
+
+Messages Received:
+
+Network Topology: 0.0.0.2 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 2
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 4
+Neighbors: 0.0.0.2 
+Send Queue:
+Sender: 0.0.0.1 Sequence: 3
+
+Received Queue:
+Sender: 0.0.0.2 Sequence: 2
+
+Messages Received:
+
+Network Topology: 0.0.0.2 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 4
+Neighbors: 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 3
+
+Received Queue:
+Sender: 0.0.0.1 Sequence: 2
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: 0.0.0.1
+IP: 0.0.0.2
+
+Lost OGMS:
+
+
+
+
+IP: 0.0.0.1
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: 0.0.0.2 
+Send Queue:
+Sender: 0.0.0.1 Sequence: 4
+
+Received Queue:
+Sender: 0.0.0.2 Sequence: 3
+
+Messages Received:
+
+Network Topology: 0.0.0.2 
+
+
+IP: 0.0.0.2
+OGM Interval Time: 5
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: 0.0.0.1 
+Send Queue:
+Sender: 0.0.0.2 Sequence: 4
+
+Received Queue:
+Sender: 0.0.0.1 Sequence: 3
+
+Messages Received:
+
+Network Topology: 0.0.0.1 
+
+

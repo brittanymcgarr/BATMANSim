@@ -1,0 +1,244 @@
+Console Log:
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 1
+
+Messages Received:
+
+Network Topology: A B 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 0
+Sender: B Sequence: 2
+Sender: B Sequence: 2
+Sender: B Sequence: 1
+Sender: B Sequence: 1
+
+Received Queue:
+Sender: A Sequence: 2
+Sender: C Sequence: 2
+Sender: C Sequence: 0
+
+Messages Received:
+
+Network Topology: A C 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 2
+
+Messages Received:
+
+Network Topology: A B 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 3
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+Sender: A Sequence: 2
+
+Messages Received:
+
+Network Topology: A C 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B 
+
+
+AOGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: B 
+Send Queue:
+
+Received Queue:
+Sender: B Sequence: 3
+
+Messages Received:
+Sender: A Data:
+Successful Multi-Hop Delivery to C from A
+
+Network Topology: A B 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 5
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 4
+Sender: B Sequence: 4
+Sender: B Sequence: 3
+
+Received Queue:
+Sender: A Sequence: 2
+Sender: A Sequence: 4
+Sender: C Sequence: 4
+
+Messages Received:
+
+Network Topology: A C 
+
+

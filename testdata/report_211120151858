@@ -1,0 +1,99 @@
+Console Log:
+
+Network:
+IP: 198.164.0.4
+IP: 198.164.0.5
+IP: 198.164.0.6
+IP: 198.164.0.1
+IP: 198.164.0.2
+IP: 198.164.0.3
+
+Lost OGMS:
+
+
+
+
+IP: 198.164.0.4
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 198.164.0.2 198.164.0.4 198.164.0.3 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 198.164.0.5
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 198.164.0.2 198.164.0.4 198.164.0.3 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 198.164.0.6
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 198.164.0.2 198.164.0.4 198.164.0.3 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 198.164.0.1
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 198.164.0.2
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 198.164.0.1 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: 198.164.0.3
+OGM Interval Time: 10
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: 198.164.0.2 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+

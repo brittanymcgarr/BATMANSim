@@ -1,0 +1,105 @@
+Network:
+IP: A
+IP: C
+
+Lost OGMS:
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 2
+OGM source IP: ASequence: 200
+OGM source IP: CSequence: 3
+OGM source IP: ASequence: 200
+OGM source IP: ASequence: 3
+OGM source IP: ASequence: 4
+OGM source IP: CSequence: 4
+OGM source IP: ASequence: 5
+OGM source IP: CSequence: 5
+OGM source IP: ASequence: 6
+OGM source IP: CSequence: 6
+OGM source IP: ASequence: 7
+OGM source IP: CSequence: 7
+OGM source IP: ASequence: 8
+OGM source IP: CSequence: 8
+OGM source IP: ASequence: 9
+OGM source IP: CSequence: 9
+OGM source IP: ASequence: 10
+OGM source IP: CSequence: 10
+OGM source IP: ASequence: 11
+OGM source IP: CSequence: 11
+OGM source IP: ASequence: 12
+OGM source IP: CSequence: 12
+OGM source IP: ASequence: 13
+OGM source IP: CSequence: 13
+OGM source IP: ASequence: 14
+OGM source IP: CSequence: 14
+OGM source IP: ASequence: 15
+OGM source IP: CSequence: 15
+OGM source IP: ASequence: 16
+OGM source IP: CSequence: 16
+OGM source IP: ASequence: 17
+OGM source IP: CSequence: 17
+OGM source IP: ASequence: 18
+OGM source IP: CSequence: 18
+OGM source IP: ASequence: 19
+OGM source IP: CSequence: 19
+OGM source IP: ASequence: 20
+OGM source IP: CSequence: 20
+OGM source IP: ASequence: 21
+OGM source IP: CSequence: 21
+OGM source IP: ASequence: 22
+OGM source IP: CSequence: 22
+OGM source IP: ASequence: 23
+OGM source IP: CSequence: 23
+OGM source IP: ASequence: 24
+OGM source IP: CSequence: 24
+OGM source IP: ASequence: 25
+OGM source IP: CSequence: 25
+OGM source IP: ASequence: 26
+OGM source IP: CSequence: 26
+OGM source IP: ASequence: 27
+OGM source IP: CSequence: 27
+OGM source IP: ASequence: 28
+OGM source IP: CSequence: 28
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 56
+Neighbors: 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+A SEND QUEUE:
+
+A RECEIVED QUEUE:
+
+A RECEIVED OGMs:
+
+A RECEIVED MESSAGES:
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 56
+Neighbors: 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+C SEND QUEUE:
+
+C RECEIVED QUEUE:
+
+C RECEIVED OGMs:
+
+C RECEIVED MESSAGES:

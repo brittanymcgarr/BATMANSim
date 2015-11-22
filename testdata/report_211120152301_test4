@@ -1,0 +1,545 @@
+Console Log:
+
+Network:
+IP: A
+IP: C
+IP: B
+IP: D
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B D 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: B D 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: A C 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+IP: D
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 0
+Neighbors: C A 
+Send Queue:
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: 
+
+
+
+
+Run Time: 10
+
+
+Network:
+IP: A
+IP: C
+IP: B
+IP: D
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 7
+Neighbors: B D 
+Send Queue:
+Sender: A Sequence: 4
+Sender: A Sequence: 4
+Sender: A Sequence: 0
+Sender: A Sequence: 0
+Sender: A Sequence: 2
+Sender: A Sequence: 5
+Sender: A Sequence: 5
+Sender: A Sequence: 2
+Sender: A Sequence: 6
+Sender: A Sequence: 6
+Sender: A Sequence: 0
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: C B D 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 7
+Neighbors: B D 
+Send Queue:
+Sender: C Sequence: 3
+Sender: C Sequence: 3
+Sender: C Sequence: 4
+Sender: C Sequence: 4
+Sender: C Sequence: 0
+Sender: C Sequence: 0
+Sender: C Sequence: 2
+Sender: C Sequence: 5
+Sender: C Sequence: 5
+Sender: C Sequence: 2
+Sender: C Sequence: 6
+Sender: C Sequence: 6
+
+Received Queue:
+Sender: B Sequence: 0
+Sender: D Sequence: 3
+
+Messages Received:
+
+Network Topology: A B D 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 7
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 3
+Sender: B Sequence: 3
+Sender: B Sequence: 4
+Sender: B Sequence: 4
+Sender: B Sequence: 0
+Sender: B Sequence: 0
+Sender: B Sequence: 2
+Sender: B Sequence: 5
+Sender: B Sequence: 5
+Sender: B Sequence: 2
+Sender: B Sequence: 6
+Sender: B Sequence: 6
+Sender: B Sequence: 3
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A C D 
+
+
+IP: D
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 7
+Neighbors: C A 
+Send Queue:
+Sender: D Sequence: 3
+Sender: D Sequence: 4
+Sender: D Sequence: 4
+Sender: D Sequence: 1
+Sender: D Sequence: 0
+Sender: D Sequence: 0
+Sender: D Sequence: 5
+Sender: D Sequence: 5
+Sender: D Sequence: 2
+Sender: D Sequence: 6
+Sender: D Sequence: 6
+Sender: D Sequence: 2
+
+Received Queue:
+Sender: A Sequence: 3
+Sender: C Sequence: 0
+
+Messages Received:
+
+Network Topology: A C B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+IP: D
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B D 
+Send Queue:
+Sender: A Sequence: 5
+Sender: A Sequence: 6
+Sender: A Sequence: 6
+Sender: B Sequence: 7
+Sender: B Sequence: 7
+Sender: B Sequence: 8
+Sender: B Sequence: 8
+Sender: A Sequence: 3
+Sender: B Sequence: 9
+Sender: B Sequence: 9
+Sender: A Sequence: 4
+Sender: A Sequence: 4
+
+Received Queue:
+Sender: B Sequence: 0
+Sender: D Sequence: 0
+
+Messages Received:
+
+Network Topology: C B D 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B D 
+Send Queue:
+Sender: C Sequence: 0
+Sender: C Sequence: 5
+Sender: C Sequence: 5
+Sender: C Sequence: 6
+Sender: C Sequence: 6
+Sender: C Sequence: 7
+Sender: C Sequence: 7
+Sender: C Sequence: 8
+Sender: C Sequence: 8
+Sender: C Sequence: 3
+Sender: C Sequence: 9
+Sender: C Sequence: 9
+Sender: C Sequence: 4
+Sender: C Sequence: 4
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A B D 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 0
+Sender: B Sequence: 5
+Sender: B Sequence: 5
+Sender: B Sequence: 6
+Sender: B Sequence: 6
+Sender: B Sequence: 7
+Sender: B Sequence: 7
+Sender: B Sequence: 4
+Sender: B Sequence: 8
+Sender: B Sequence: 8
+Sender: B Sequence: 9
+Sender: B Sequence: 9
+Sender: B Sequence: 4
+
+Received Queue:
+Sender: A Sequence: 5
+Sender: C Sequence: 0
+
+Messages Received:
+
+Network Topology: A C D 
+
+
+IP: D
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: C A 
+Send Queue:
+Sender: D Sequence: 5
+Sender: D Sequence: 5
+Sender: D Sequence: 6
+Sender: D Sequence: 6
+Sender: D Sequence: 7
+Sender: D Sequence: 7
+Sender: D Sequence: 8
+Sender: D Sequence: 8
+Sender: D Sequence: 4
+Sender: D Sequence: 9
+Sender: D Sequence: 9
+Sender: D Sequence: 3
+Sender: D Sequence: 4
+
+Received Queue:
+
+Messages Received:
+
+Network Topology: A C B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+IP: D
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B D 
+Send Queue:
+Sender: B Sequence: 8
+Sender: B Sequence: 8
+Sender: B Sequence: 9
+Sender: B Sequence: 9
+Sender: A Sequence: 5
+Sender: A Sequence: 5
+Sender: A Sequence: 6
+
+Received Queue:
+Sender: D Sequence: 6
+
+Messages Received:
+
+Network Topology: C B D 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: B D 
+Send Queue:
+Sender: C Sequence: 7
+Sender: C Sequence: 7
+Sender: C Sequence: 8
+Sender: C Sequence: 8
+Sender: C Sequence: 9
+Sender: C Sequence: 9
+Sender: C Sequence: 5
+Sender: C Sequence: 5
+Sender: C Sequence: 6
+
+Received Queue:
+Sender: B Sequence: 6
+Sender: D Sequence: 7
+
+Messages Received:
+
+Network Topology: A B D 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 7
+Sender: B Sequence: 7
+Sender: B Sequence: 8
+Sender: B Sequence: 8
+Sender: B Sequence: 9
+Sender: B Sequence: 9
+Sender: B Sequence: 6
+Sender: B Sequence: 5
+
+Received Queue:
+Sender: C Sequence: 6
+
+Messages Received:
+
+Network Topology: A C D 
+
+
+IP: D
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 10
+Neighbors: C A 
+Send Queue:
+Sender: D Sequence: 7
+Sender: D Sequence: 8
+Sender: D Sequence: 8
+Sender: D Sequence: 9
+Sender: D Sequence: 9
+Sender: D Sequence: 4
+Sender: D Sequence: 6
+Sender: D Sequence: 5
+
+Received Queue:
+Sender: B Sequence: 7
+Sender: C Sequence: 6
+
+Messages Received:
+
+Network Topology: A C B 
+
+
+
+
+Run Time: 5
+
+
+Network:
+IP: A
+IP: C
+IP: B
+IP: D
+
+Lost OGMS:
+
+
+
+
+IP: A
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 12
+Neighbors: B D 
+Send Queue:
+Sender: B Sequence: 10
+Sender: A Sequence: 7
+Sender: A Sequence: 8
+Sender: B Sequence: 11
+Sender: B Sequence: 11
+Sender: A Sequence: 8
+
+Received Queue:
+Sender: B Sequence: 9
+Sender: D Sequence: 9
+
+Messages Received:
+
+Network Topology: C B D 
+
+
+IP: C
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 12
+Neighbors: B D 
+Send Queue:
+Sender: C Sequence: 9
+Sender: C Sequence: 10
+Sender: C Sequence: 10
+Sender: C Sequence: 7
+Sender: C Sequence: 8
+Sender: C Sequence: 11
+Sender: C Sequence: 11
+Sender: C Sequence: 8
+
+Received Queue:
+Sender: D Sequence: 9
+
+Messages Received:
+
+Network Topology: A B D 
+
+
+IP: B
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 12
+Neighbors: A C 
+Send Queue:
+Sender: B Sequence: 9
+Sender: B Sequence: 6
+Sender: B Sequence: 10
+Sender: B Sequence: 10
+Sender: B Sequence: 7
+Sender: B Sequence: 11
+Sender: B Sequence: 11
+Sender: B Sequence: 8
+
+Received Queue:
+Sender: B Sequence: 10
+Sender: C Sequence: 9
+
+Messages Received:
+
+Network Topology: A C D 
+
+
+IP: D
+OGM Interval Time: 3
+Uni-Directional Link: False
+Sequence: 12
+Neighbors: C A B 
+Send Queue:
+Sender: D Sequence: 6
+Sender: D Sequence: 10
+Sender: D Sequence: 10
+Sender: D Sequence: 10
+Sender: D Sequence: 6
+Sender: D Sequence: 8
+Sender: D Sequence: 8
+Sender: D Sequence: 7
+Sender: D Sequence: 7
+Sender: D Sequence: 11
+Sender: D Sequence: 11
+Sender: D Sequence: 11
+Sender: D Sequence: 9
+Sender: D Sequence: 9
+
+Received Queue:
+Sender: C Sequence: 8
+
+Messages Received:
+
+Network Topology: A C B 
+
+
