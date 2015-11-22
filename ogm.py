@@ -39,6 +39,7 @@ class OGM:
         nHop = "Next hop: " + str(self.nextHop) + "\n"
         seq = "Sequence Number: " + str(self.sequence) + "\n"
         ttl = "TTL: " + str(self.TTL) + "\n"
-        direction = "Uni-Directional? " + str(self.directional) + "\n\n"
+        direction = "Uni-Directional? " + str(self.directional) + "\n"
+        payload = "Data: " + str(self.payload) + "\n\n"
 
-        return oIP + sendIP + nHop + seq + ttl + direction
+        return oIP + sendIP + nHop + seq + ttl + direction + payload

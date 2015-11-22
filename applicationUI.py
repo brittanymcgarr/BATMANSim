@@ -86,7 +86,6 @@ class ApplicationUI:
         self.window.config(menu=self.menu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.file_menu.add_command(label="New", command=self.clearNetwork)
-        self.file_menu.add_command(label="Open", command=self.loadNetwork)
         self.file_menu.add_command(label="Save", command=self.saveNetwork)
         self.file_menu.add_separator()
         self.file_menu.add_command(label="Exit", command=self.window.quit)
@@ -370,13 +369,41 @@ class ApplicationUI:
             self.console.insert(END, self.messagePipe[-1])
             self.console.yview(END)
 
-    # Save the current configuration to a file
+    # Save the current network data to a file
     def saveNetwork(self):
-        return True # STUB
+        # Create a file with "fullReport" and timestamp as title
+        fileOUT = open("fullReport_" + time.strftime("%d%m%Y%H%M"), "w")
 
-    # Load a network configuration from a file
-    def loadNetwork(self):
-        return True # STUB
+        # Report the current network topology, first
+        fileOUT.write(self.controller.reportString())
+        fileOUT.write("\n\n")
+
+        # Iterate through each node in the controller and generate all data
+        for key, value in self.controller.network.iteritems():
+            fileOUT.write(value.reportString())
+
+            # Iterate through all OGMs, messages, and collected OGMs
+            fileOUT.write("\n" + value.IP + " SEND QUEUE:\n")
+            for each in value.sendQueue:
+                fileOUT.write(each.reportString())
+
+            # Iterate all received queue
+            fileOUT.write("\n" + value.IP + " RECEIVED QUEUE:\n")
+            for each in value.receiveQueue:
+                fileOUT.write(each.reportString())
+
+            # Iterate through all received OGMs
+            fileOUT.write("\n" + value.IP + " RECEIVED OGMs:\n")
+            for ip, ogmMsg in value.receivedOGMs.iteritems():
+                fileOUT.write(ogmMsg.reportString())
+
+            # Iterate through all the received messages, too
+            fileOUT.write("\n" + value.IP + " RECEIVED MESSAGES:\n")
+            for ip, message in value.receivedMessages.iteritems():
+                fileOUT.write(message.reportString())
+
+        # Close the file
+        fileOUT.close()
 
     # Draw the network in a canvas
     def drawNetwork(self):
