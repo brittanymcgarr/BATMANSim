@@ -61,7 +61,7 @@ class User:
                 ip = self.IP
 
             for neighbor in self.neighbors:
-                outgoingOGM = ogm.OGM(origIP=ip, sendIP=self.IP, seq=self.sequence,
+                outgoingOGM = ogm.OGM(origIP=ip, sendIP=ip, seq=self.sequence,
                                       ttl=self.keepAlive, direction=self.directional)
                 outgoingOGM.nextHop = neighbor.IP
                 self.sendQueue.append(outgoingOGM)

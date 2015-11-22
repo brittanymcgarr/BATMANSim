@@ -341,6 +341,7 @@ class ApplicationUI:
                 userNode.removeNeighbor(neighbor)
 
     # Create attacker node by collecting spoof data
+    # Attacker must be valid IP in the network, but spoofed IP can be anything
     def addSpoof(self):
         if self.spoofAttacker_str.get() in self.controller.network.keys():
             userNode = self.controller.network[self.spoofAttacker_str.get()]
