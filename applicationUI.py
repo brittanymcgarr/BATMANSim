@@ -99,6 +99,7 @@ class ApplicationUI:
         self.console_scrollbar = Scrollbar(self.right_frame, command=self.console.yview)
         self.canvas = Canvas(self.foot_frame, width=canvas_width, height=canvas_height)
         self.print_button = Button(self.right_frame, text="Report Console", width=entry_width, command=self.printConsole)
+        self.graph_button = Button(self.right_frame, text="Graph", width=entry_width, command=self.drawNetwork)
 
         # Create the node button widgets
         self.node1_button = Button(self.left_frame, text="User Node 1", width=button_width, command=self.displayUserInput1)
@@ -190,6 +191,7 @@ class ApplicationUI:
         self.console.config(yscrollcommand=self.console_scrollbar.set)
         self.console.insert(END, self.messagePipe[0])
         self.print_button.grid(row=1, column=0, columnspan=2)
+        self.graph_button.grid(row=2, column=0, columnspan=2)
 
         # Node Buttons (Initial state)
         self.node1_button.grid(row=0, column=0, columnspan=2)
@@ -378,7 +380,7 @@ class ApplicationUI:
 
     # Draw the network in a canvas
     def drawNetwork(self):
-        return True # STUB
+        self.controller.reportGraph()
 
     # Run the program for the specified time
     def runNetwork(self):

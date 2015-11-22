@@ -125,7 +125,7 @@ class User:
                         outgoingOGM.senderIP = self.IP
                         outgoingOGM.directional = self.directional
                         outgoingOGM.nextHop = index.IP
-                        
+
                         self.sendQueue.append(outgoingOGM)
 
     # Add unique neighbor to the user's listing (used for initial state and for altering in GUI)
